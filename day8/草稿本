@@ -1,0 +1,35 @@
+basePath = '/home/shunzi/person/老男孩pratice/day8/ftp/db/accounts/homes'
+currentPath = '/' + account_name
+os
+
+
+
+cd '':
+	1.将currentPath以'/'分割成列表,然后将列表中的第一个元素取出来,重新拼起来.
+	2.返回重新拼成的路径
+
+cd ..:	1.判断当前路径是否是主目录
+		1.yes,直接返回当前路径
+		2.no,将currentPath以'/'分割成列表,去除倒数第一个元素.然后将列表拼成路径(专门写一个将列表拼成路径的函数)
+		3.返回重新拼成的路径
+
+
+cd 'path':
+	1.将接受到的路径参数与当前路径对比,去掉重复的部分,将不重复的部分拼接到当前路径中.
+	2.返回当前路径.
+
+
+
+在使用其他方法时,必须得保证用户已经登录服务端
+	1.当execution_handler为'>>'时只能执行登录和注册.
+	2.当execution_handler不为'>>'表示该用户登录过了,可以执行除登录外的其他函数.
+	3.当execution_handler为'>>'时,执行其他函数时,会自动启动登录方法进行验证.
+
+对执行路径做两种处理:
+	1.去当前目录下看(basePath + currentPath)
+	2.绝对路径查看(basePath + 绝对路径)
+
+
+json:命令,文件名,文件大小.
+
+
