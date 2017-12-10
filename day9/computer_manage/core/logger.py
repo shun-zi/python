@@ -7,10 +7,11 @@ sys.path.append(BASE_DIR)
 import logging
 from conf import setting
 
-class logger(object):
-    def __init__(self, loggerName=None, logger=None):
+class Logger(object):
+
+    def __init__(self, loggerName=None, logger_dbj=None):
         self.name = loggerName
-        self.logger = logger
+        self.logger = logger_dbj
 
     def create_logger(self, level=logging.DEBUG):
         '''创建logger对象'''
@@ -30,7 +31,7 @@ class logger(object):
         ch.setLevel(level)
 
         #设置日志格式
-        formatter = self.set_formatter(formatterStr)
+        formatter = self.set_formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         ch.setFormatter(formatter)
 
         #将设置好的handler加入logger
@@ -43,7 +44,7 @@ class logger(object):
         fh.setLevel(setting.LOG_LEVEL)
 
         # 设置日志格式
-        formatter = self.set_formatter(formatterStr)
+        formatter = self.set_formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
         fh.setFormatter(formatter)
 
         # 将设置好的handler加入logger
