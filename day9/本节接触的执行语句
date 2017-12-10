@@ -1,0 +1,34 @@
+1.threading.current_thread()	:表示当前执行线程的身份.
+2.threading.active_count()	:表示当前还处于活动的线程个数.
+3.t.join()	:等待指定线程运行结束.(t为线程)
+4.t.setDaemon(True)	:将当前线程设置为守护线程.(t为线程)
+5.threading.lock()	:建立一个锁对象.
+6.threading.lock().acquire() :获得一把锁
+7.threading.lock().release() :释放一把锁.
+8.threading.BoundedSemaphore(number)	:最多允许number数量的线程同时运行.
+9.event.set()	#设置事件.
+10.event.clear()	#清空事件. 
+11.event.wait()		#等待事件被设置.
+12.event.is_set()	#检查是否设置了标志位.
+13.queue.Queue(maxsize=0) #先入先出
+14.Queue.put(item, block=True, timeout=None)	#放入数据
+15.Queue.get(item, block=True, timeout=None)	#取出数据
+16.Queue.qsize()	#队列大小.
+17.Queue.empty() #return True if empty  
+18.Queue.full() # return True if full 
+19.Queue.get_nowait	#抛出一个queue.Empty的异常.
+20.queue.LifoQueue(maxsize=0) #后进先出  
+21.queue.PriorityQueue(maxsize=0) #存储数据时可设置优先级的队列
+#远程连接.
+22.ssh = paramiko.SSHClient()	#创建SSH对象
+23.ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy(())	#将服务器的认证存储在本地主机中.
+24.ssh.connect(..)	#连接服务器.
+25.ssh.exec_command(..)	#操作服务器的终端命令并返回相应内容.
+#远程运输
+26.transport = paramiko.Transport(..)	#创建Transport对象
+27.transport.connect(..)	#连接服务器.
+28.sftp = paramiko.SFTPClient.from_transport('transport')	#
+29.sftp.put()	#本地向服务器上传文件
+30.sftp.get()	#本地从服务器上下载文件.
+26.transport = 
+
