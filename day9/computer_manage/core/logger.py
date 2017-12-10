@@ -1,4 +1,4 @@
-'''创建logger程序'''
+'''创建logger类'''
 import os
 import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -7,29 +7,44 @@ sys.path.append(BASE_DIR)
 import logging
 from conf import setting
 
-def create_logger(loggerName):
-    '''创建一个完整的logger'''
-    #创建logger
-    logger = logging.getLogger(loggerName)
-    logger.setLevel(logging.DEBUG)
+class logger(object):
+    def __init__(self, loggerName=None, logger=None):
+        self.name = loggerName
+        self.logger = logger
 
-    #创建控制台handler
-    ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
+    def create_logger(self, level=logging.DEBUG):
+        '''创建logger对象'''
+        self.logger = logging.getLogger(self.name)
+        self.logger.setLevel(level)
 
-    #创建文件handler
-    fh = logging.FileHandler(setting.LOG_TYPES['operator'])
-    fh.setLevel(setting.LOG_LEVEL)
+    def set_formatter(self, formatterStr):
+        '''设置日志格式'''
+        formatter = logging.Formatter(formatterStr)
+        return formatter
 
-    #设置输出格式
-    formatter = logging.Formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 
-    #将设置好的格式加入handler中
-    ch.setFormatter(formatter)
-    fh.setFormatter(formatter)
+    def create_console_handler(self, level=logging.DEBUG, formatterStr=None):
+        '''创建控制台handler'''
+        #创建控制台handler对象
+        ch = logging.StreamHandler()
+        ch.setLevel(level)
 
-    #将设置好的handler加入到logger
-    logger.addHandler(ch)
-    logger.addHandler(fh)
+        #设置日志格式
+        formatter = self.set_formatter(formatterStr)
+        ch.setFormatter(formatter)
 
-    return logger
+        #将设置好的handler加入logger
+        self.logger.addHandler(ch)
+
+    def create_file_handler(self, level=logging.DEBUG, formatterStr=None):
+        '''创建文件handler'''
+        #创建文件handler对象
+        fh = logging.FileHandler(setting.LOG_TYPES['operator'])
+        fh.setLevel(setting.LOG_LEVEL)
+
+        # 设置日志格式
+        formatter = self.set_formatter(formatterStr)
+        fh.setFormatter(formatter)
+
+        # 将设置好的handler加入logger
+        self.logger.addHandler(fh)
