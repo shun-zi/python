@@ -10,6 +10,8 @@ class Server(object):
         exe_dict = {'stdin': stdin, 'stdout': stdout, 'stderr': stderr}
         return exe_dict
 
-    def transport(self, transport, command):
+    def transport(self, transport, exec_operator, fileName1, fileName2):
         '''在本地和主机之间执行传输请求'''
-        pass
+        operator = getattr(transport, exec_operator)
+        operator(fileName1, fileName2)
+
