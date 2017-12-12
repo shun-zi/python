@@ -91,4 +91,6 @@
 	1,db_handler文件的函数加上异常处理.
 	2.执行命令返回内容的输出要优化.
 	3.对transport函数进行异常处理
+	4.对exec_command函数进行异常处理
+	5.transport函数进行传输命令输入时,filename1或者filename2带有账户名称会有问题出现.
 

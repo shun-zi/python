@@ -36,14 +36,14 @@ class Group(object):
 
     def transport_connect(self, hostname, port, username, password):
         '''对主机进行传输连接'''
-        # try:
-        transport = paramiko.Transport((hostname, port))
-        transport.connect(username=username, password=password)
-        return transport
-        # except:
-        #     new = hostname + ':连接失败'
-        #     self.logger.warn(new)
-        #     return False
+        try:
+            transport = paramiko.Transport((hostname, port))
+            transport.connect(username=username, password=password)
+            return transport
+        except:
+            new = hostname + ':连接失败'
+            self.logger.warn(new)
+            return False
 
     def add_computer(self, hostname, port, username, password):
         '''添加主机到分组中'''
@@ -152,6 +152,7 @@ class Group(object):
                             result = server_obj.exec_queue.get()
                             dict = {computer: {'stdout':result['stdout'].read().decode(), 'stderr':result['stderr'].read().decode()}}
                             print(dict)
+                            ssh.close()
                         except:
                             self.logger('该命令执行错误')
                 while threading.active_count() != 1:
@@ -178,20 +179,34 @@ class Group(object):
                 # 连接主机,并将主机和连接状态放到字典中.
                 transport = self.transport_connect(data['hostname'], data['port'], data['username'], data['password'])
                 computersStatus[computer] = transport
+                print(computersStatus)
             while True:
                 exec_command = input("请输入批量传输的命令:").split()
-                if exec_command == 'exit':
+                if exec_command[0] == 'exit':
                     break
                 fileName1 = exec_command[1]
                 fileName2 = exec_command[2]
                 exec_command = exec_command[0]
+
                 # 遍历字典,给连接上的主机执行命令.
                 for computer, transport in computersStatus.items():
                     if transport != False:
+                        if exec_command == 'get':
+                            list = fileName1.split('/')
+                            username = transport.get_username()
+                            list[2] = username
+                            fileName1 = ''
+                            for item in list:
+                                fileName1 += item
+                                fileName1 += '/'
+                            fileName1 = fileName1[:-1]
+                            print(fileName1)
                         try:
-                            t = threading.Thread(target=server_obj.exec_command, args=[transport, exec_command, fileName1, fileName2,])
+                            t = threading.Thread(target=server_obj.transport, args=[transport, exec_command, fileName1, fileName2,])
                             t.start()
+                            t.join()
                             self.logger.info('成功传输文件')
+                            transport.close()
                         except:
                             self.logger.warn('传输文件失败.')
                 while threading.active_count() != 1:

@@ -20,3 +20,11 @@ class Server(object):
         sftp = paramiko.SFTPClient.from_transport(transport)
         operator = getattr(sftp, exec_operator)
         operator(fileName1, fileName2)
+
+
+
+# transport1 = paramiko.Transport(('192.168.1.105', 22))
+# transport1.connect(username='fzm', password='w1w2w3w4')
+# server = Server()
+# # sftp = paramiko.SFTPClient.from_transport(transport1)
+# server.transport(transport1, 'put', '/home/shunzi/heheh', '/tmp/shunzi.txt')

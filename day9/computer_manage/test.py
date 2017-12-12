@@ -24,10 +24,11 @@ import paramiko
 
 
 # #对远程服务器进行文件传输的动作.
-# transport1 = paramiko.Transport(('192.168.1.105', 22))
-# transport1.connect(username='fzm', password='w1w2w3w4')
-# # server = Server()
-# sftp = paramiko.SFTPClient.from_transport(transport1)
+transport1 = paramiko.Transport(('192.168.1.105', 22))
+transport1.connect(username='fzm', password='w1w2w3w4')
+print(transport1.get_username())
+# server = Server()
+sftp = paramiko.SFTPClient.from_transport(transport1)
 # # 将heheh文件上传至服务器/tmp/shunzi.txt
 # sftp.put('/home/shunzi/heheh', '/tmp/shunzi.txt')
 # # server.transport(sftp, 'get', '/home/shunzi/heheh', '/tmp/shunzi.txt')
@@ -37,6 +38,9 @@ import paramiko
 
 import time
 import threading
+
+# put /home/shunzi/heheh /tmp/shunzi.txt
+# get /home/fzm/shunzi /tmp/shunzi.txt
 
 
 # def run(n):
