@@ -23,8 +23,12 @@ if settings.DATABASE['engine'] == 'file_storage':
         def get_fileNamesList(self, fileName):
             '''取出某个文件下的全部文件名'''
             filePath = self.basePath + '/' + fileName
-            file_name_list = os.listdir(filePath)
-            return file_name_list
+            try:
+                file_name_list = os.listdir(filePath)
+                return file_name_list
+            except FileNotFoundError as e:
+                print(e)
+                return False
 
         def get_fileDate(self, fileName):
             '''取出指定文件的数据'''

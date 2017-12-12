@@ -5,7 +5,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 import logging
-from conf import setting
+from conf import settings
 
 class Logger(object):
 
@@ -40,8 +40,8 @@ class Logger(object):
     def create_file_handler(self, level=logging.DEBUG, formatterStr=None):
         '''创建文件handler'''
         #创建文件handler对象
-        fh = logging.FileHandler(setting.LOG_TYPES['operator'])
-        fh.setLevel(setting.LOG_LEVEL)
+        fh = logging.FileHandler(settings.LOG_TYPES['operator'])
+        fh.setLevel(settings.LOG_LEVEL)
 
         # 设置日志格式
         formatter = self.set_formatter('%(asctime)s - %(name)s - %(levelname)s - %(message)s')

@@ -6,6 +6,8 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.append(BASE_DIR)
 
 import paramiko
+import threading
+import time
 # import db_handler
 from computer_manage.core.db_handler import *
 from computer_manage.core.server_operator import *
@@ -22,9 +24,10 @@ class Group(object):
     def connect_computer(self, hostname, port, username, password):
         '''如果指定主机能连上则返回True'''
         ssh = paramiko.SSHClient()
+        ssh.set_missing_host_key_policy(paramiko.AutoAddPolicy())
 
         try:
-            ssh.connect(hostname=hostname, port=port, username=username, password=paramiko)
+            ssh.connect(hostname=hostname, port=port, username=username, password=password)
             return ssh
         except:
             new = hostname + ':连接失败'
@@ -33,14 +36,14 @@ class Group(object):
 
     def transport_connect(self, hostname, port, username, password):
         '''对主机进行传输连接'''
-        try:
-            transport = paramiko.Transport((hostname, port))
-            transport.connect(username=username, password=password)
-            return transport
-        except:
-            new = hostname + ':连接失败'
-            self.logger.warn(new)
-            return False
+        # try:
+        transport = paramiko.Transport((hostname, port))
+        transport.connect(username=username, password=password)
+        return transport
+        # except:
+        #     new = hostname + ':连接失败'
+        #     self.logger.warn(new)
+        #     return False
 
     def add_computer(self, hostname, port, username, password):
         '''添加主机到分组中'''
@@ -58,6 +61,7 @@ class Group(object):
                 data = {'hostname': hostname, 'port': port, 'username': username,
                         'password': password}
                 self.db.store_data(computerRelativePath, data)
+                return True
             else:
                 #出列表中最后一个文件名,判断其目录下的文件个数
                 last_groupId = groups_list[-1]
@@ -70,6 +74,7 @@ class Group(object):
                     data = {'hostname': hostname, 'port': port, 'username': username,
                             'password': password}
                     self.db.store_data(computerRelativePath, data=data)
+                    return True
                 else:
                     #分组下的主机数已满,新建一个新的分组文件夹.
                     last_groupId = str(int(last_groupId) + 1)
@@ -81,8 +86,9 @@ class Group(object):
                     data = {'hostname': hostname, 'port': port, 'username': username,
                            'password': password}
                     self.db.store_data(computerRelativePath, data=data)
+                    return True
         else:
-            pass
+            return False
 
 
     def show_group(self):
@@ -91,11 +97,14 @@ class Group(object):
         groupsRelativePath = 'computers'
         groupsList = self.db.get_fileNamesList(groupsRelativePath)
 
-        print('**************************')
-        print('         分组列表:         ')
-        for groupId in groupsList:
-            print(groupId)
-        print('**************************')
+        if groupsList == False:
+            print('文件路径不存在.')
+        else:
+            print('**************************')
+            print('         分组列表:         ')
+            for groupId in groupsList:
+                print(groupId)
+            print('**************************')
 
 
     def show_computers_for_group(self, groupId):
@@ -138,11 +147,16 @@ class Group(object):
                 for computer, ssh in computersStatus.items():
                     if ssh != False:
                         try:
-                            result = server_obj.exec_command(ssh, exec_command)
-                            dict = {computer: result}
+                            t = threading.Thread(target=server_obj.exec_command, args=[ssh, exec_command,])
+                            t.start()
+                            result = server_obj.exec_queue.get()
+                            dict = {computer: {'stdout':result['stdout'].read().decode(), 'stderr':result['stderr'].read().decode()}}
                             print(dict)
                         except:
                             self.logger('该命令执行错误')
+                while threading.active_count() != 1:
+                    #等待所有子线程进行完成
+                    time.sleep(1)
 
 
     def batch_transport_file(self, groupId):
@@ -175,7 +189,11 @@ class Group(object):
                 for computer, transport in computersStatus.items():
                     if transport != False:
                         try:
-                            server_obj.transport(transport, exec_command, fileName1, fileName2)
-                            self.logger('成功传输文件')
+                            t = threading.Thread(target=server_obj.exec_command, args=[transport, exec_command, fileName1, fileName2,])
+                            t.start()
+                            self.logger.info('成功传输文件')
                         except:
-                            self.logger('传输文件失败.')
+                            self.logger.warn('传输文件失败.')
+                while threading.active_count() != 1:
+                    #等待所有子线程进行完成
+                    time.sleep(1)

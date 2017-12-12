@@ -14,14 +14,14 @@ from computer_manage.conf.settings import *
 loggerName = 'manage computer'
 logger = Logger(loggerName)
 logger.create_logger(LOG_LEVEL)
-logger.create_console_handler(logging.DEBUG)
+# logger.create_console_handler(logging.DEBUG)
 logger.create_file_handler(LOG_LEVEL)
 
 #创建DB对象
 db_obj = DB()
 
 #创建Group对象
-group = Group(db_obj=db_obj, logger_dbj=logger)
+group = Group(db_obj=db_obj, logger_dbj=logger.logger)
 
 while True:
     print('*******************')
@@ -33,17 +33,21 @@ while True:
     fun_index = int(input("请输入你要进行的操作的索引:"))
 
     if fun_index == 0:
-        logger.info('退出系统')
+        logger.logger.info('退出系统')
+        break
 
     elif fun_index == 1:
         #添加主机
         hostname = input('请输入ip地址:')
-        port = input('请输入端口:')
+        port = int(input('请输入端口:'))
         username = input('请输入主机名:')
         password = input('请输入主机密码:')
 
-        group.add_computer(hostname, port, username, password)
-        print('添加成功')
+        ssh = group.add_computer(hostname, port, username, password)
+        if ssh != False:
+            print('添加成功')
+        else:
+            print('该连接不存在   ')
     elif fun_index == 2:
         #显示分组
         group.show_group()
