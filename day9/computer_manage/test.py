@@ -23,12 +23,12 @@ import paramiko
 #     print(2)
 
 
-# #对远程服务器进行文件传输的动作.
-transport1 = paramiko.Transport(('192.168.1.105', 22))
-transport1.connect(username='fzm', password='w1w2w3w4')
-print(transport1.get_username())
-# server = Server()
-sftp = paramiko.SFTPClient.from_transport(transport1)
+# # #对远程服务器进行文件传输的动作.
+# transport1 = paramiko.Transport(('192.168.1.105', 22))
+# transport1.connect(username='fzm', password='w1w2w3w4')
+# print(transport1.get_username())
+# # server = Server()
+# sftp = paramiko.SFTPClient.from_transport(transport1)
 # # 将heheh文件上传至服务器/tmp/shunzi.txt
 # sftp.put('/home/shunzi/heheh', '/tmp/shunzi.txt')
 # # server.transport(sftp, 'get', '/home/shunzi/heheh', '/tmp/shunzi.txt')
@@ -59,27 +59,42 @@ import threading
 #
 #
 # main()
-
-class Foo(object):
-    def __init__(self):
-        self.name = 'wupeiqi'
-
-    def hehe(self,s,a):
-        print(a)
-        print(s)
-
-    def func(self, a, s):
-        self.hehe(s, a)
-
-
-obj = Foo()
+#
+# class Foo(object):
+#     def __init__(self):
+#         self.name = 'wupeiqi'
+#
+#     def hehe(self,s,a):
+#         print(a)
+#         print(s)
+#
+#     def func(self, a, s):
+#         self.hehe(s, a)
+#
+#
+# obj = Foo()
 
 # # #### 检查是否含有成员 ####
 # hasattr(obj, 'name')
 # hasattr(obj, 'func')
 
 # #### 获取成员 ####
-a = getattr(obj, 'name')
-b = getattr(obj, 'func')
-print(a)
-print(b)
+# a = getattr(obj, 'name')
+# b = getattr(obj, 'func')
+# print(a)
+# print(b)
+
+from computer_manage.core.db_handler import *
+
+db_obj = DB()
+a = 'fshask/sfjsalfjaflk'
+# try:
+# # list = db_obj.get_fileNamesList(a) #FileNotFoundError
+# #     list = db_obj.get_fileDate(a)#FileNotFoundError
+# #     db_obj.store_data(a,b)FileNotFoundError
+# except Exception as e:
+#     print(e)
+
+b = 12312
+
+db_obj.makedir(a)

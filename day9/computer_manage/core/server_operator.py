@@ -11,15 +11,21 @@ class Server(object):
 
     def exec_command(self, ssh, command):
         '''执行命令'''
+        # try:
         stdin, stdout, stderr = ssh.exec_command(command)
         exe_dict = {'stdout': stdout, 'stderr': stderr}
         q.put(item=exe_dict)
+        # except Exception as e:
+        #     print(e)
 
     def transport(self, transport, exec_operator, fileName1, fileName2):
         '''在本地和主机之间执行传输请求'''
-        sftp = paramiko.SFTPClient.from_transport(transport)
-        operator = getattr(sftp, exec_operator)
-        operator(fileName1, fileName2)
+        try:
+            sftp = paramiko.SFTPClient.from_transport(transport)
+            operator = getattr(sftp, exec_operator)
+            operator(fileName1, fileName2)
+        except Exception as e:
+            print(e)
 
 
 

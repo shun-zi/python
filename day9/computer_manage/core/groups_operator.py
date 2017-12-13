@@ -48,46 +48,51 @@ class Group(object):
     def add_computer(self, hostname, port, username, password):
         '''添加主机到分组中'''
         ssh = self.connect_computer(hostname, port, username, password)
-        if ssh != False:
-            groupsRelativePath = 'computers'
-            #将全部的分组号取出存储到一个列表中.
-            groups_list = self.db.get_fileNamesList(groupsRelativePath)
-            if len(groups_list) == 0:
-                #分组列表为空.则新建一个分组文件夹,并将新添加的主机信息存储到该目录下.
-                newGroupRelativePath = groupsRelativePath + '/1'
-                self.db.makedir(newGroupRelativePath)
+        try:
+            #只检查文件的异常
+            if ssh != False:
+                groupsRelativePath = 'computers'
+                #将全部的分组号取出存储到一个列表中.
+                groups_list = self.db.get_fileNamesList(groupsRelativePath)
+                if len(groups_list) == 0:
+                    #分组列表为空.则新建一个分组文件夹,并将新添加的主机信息存储到该目录下.
+                    newGroupRelativePath = groupsRelativePath + '/1'
+                    self.db.makedir(newGroupRelativePath)
 
-                computerRelativePath = newGroupRelativePath + '/' + username
-                data = {'hostname': hostname, 'port': port, 'username': username,
-                        'password': password}
-                self.db.store_data(computerRelativePath, data)
-                return True
-            else:
-                #出列表中最后一个文件名,判断其目录下的文件个数
-                last_groupId = groups_list[-1]
-                groupRelativePath = groupsRelativePath + '/' + last_groupId
-                computersList = self.db.get_fileNamesList(groupRelativePath)
-
-                if len(computersList) < self.memberNumber:
-                    #添加的主机信息存储到该目录下.
-                    computerRelativePath = groupRelativePath + '/' + username
+                    computerRelativePath = newGroupRelativePath + '/' + username
                     data = {'hostname': hostname, 'port': port, 'username': username,
                             'password': password}
-                    self.db.store_data(computerRelativePath, data=data)
+                    self.db.store_data(computerRelativePath, data)
                     return True
                 else:
-                    #分组下的主机数已满,新建一个新的分组文件夹.
-                    last_groupId = str(int(last_groupId) + 1)
+                    #出列表中最后一个文件名,判断其目录下的文件个数
+                    last_groupId = groups_list[-1]
                     groupRelativePath = groupsRelativePath + '/' + last_groupId
-                    self.db.makedir(groupRelativePath)
+                    computersList = self.db.get_fileNamesList(groupRelativePath)
 
-                    #将新添加的主机信息存储到该目录下
-                    computerRelativePath = groupRelativePath + '/' + username
-                    data = {'hostname': hostname, 'port': port, 'username': username,
-                           'password': password}
-                    self.db.store_data(computerRelativePath, data=data)
-                    return True
-        else:
+                    if len(computersList) < self.memberNumber:
+                        #添加的主机信息存储到该目录下.
+                        computerRelativePath = groupRelativePath + '/' + username
+                        data = {'hostname': hostname, 'port': port, 'username': username,
+                                'password': password}
+                        self.db.store_data(computerRelativePath, data=data)
+                        return True
+                    else:
+                        #分组下的主机数已满,新建一个新的分组文件夹.
+                        last_groupId = str(int(last_groupId) + 1)
+                        groupRelativePath = groupsRelativePath + '/' + last_groupId
+                        self.db.makedir(groupRelativePath)
+
+                        #将新添加的主机信息存储到该目录下
+                        computerRelativePath = groupRelativePath + '/' + username
+                        data = {'hostname': hostname, 'port': port, 'username': username,
+                               'password': password}
+                        self.db.store_data(computerRelativePath, data=data)
+                        return True
+            else:
+                return False
+        except FileNotFoundError as e:
+            print(e)
             return False
 
 
@@ -96,15 +101,11 @@ class Group(object):
         #将computers的目录下的文件名取出放到一个列表中.
         groupsRelativePath = 'computers'
         groupsList = self.db.get_fileNamesList(groupsRelativePath)
-
-        if groupsList == False:
-            print('文件路径不存在.')
-        else:
-            print('**************************')
-            print('         分组列表:         ')
-            for groupId in groupsList:
-                print(groupId)
-            print('**************************')
+        print('**************************')
+        print('         分组列表:         ')
+        for groupId in groupsList:
+            print(groupId)
+        print('**************************')
 
 
     def show_computers_for_group(self, groupId):
@@ -150,8 +151,10 @@ class Group(object):
                             t = threading.Thread(target=server_obj.exec_command, args=[ssh, exec_command,])
                             t.start()
                             result = server_obj.exec_queue.get()
-                            dict = {computer: {'stdout':result['stdout'].read().decode(), 'stderr':result['stderr'].read().decode()}}
-                            print(dict)
+                            # dict = {computer: {'stdout':result['stdout'].read().decode(), 'stderr':result['stderr'].read().decode()}}
+                            print(computer + ':')
+                            print('stdout:' + result['stdout'].read().decode())
+                            print('stderr:' + result['stderr'].read().decode())
                             ssh.close()
                         except:
                             self.logger('该命令执行错误')

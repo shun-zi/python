@@ -47,12 +47,15 @@ while True:
         if ssh != False:
             print('添加成功')
         else:
-            print('该连接不存在   ')
+            print('添加失败')
     elif fun_index == 2:
         #显示分组
-        group.show_group()
-        groupId = input('请指定分组:')
-        group.show_computers_for_group(groupId=groupId)
+        try:
+            group.show_group()
+            groupId = input('请指定分组:')
+            group.show_computers_for_group(groupId=groupId)
+        except FileNotFoundError as e:
+            print(e)
 
         while True:
             #显示功能
@@ -64,10 +67,12 @@ while True:
             print('*******************')
 
             operator_index = int(input("请输入你要进行的操作的索引:"))
-
-            if operator_index == 0:
-                break
-            elif operator_index == 1:
-                group.batch_execution_command(groupId)
-            elif operator_index == 2:
-                group.batch_transport_file(groupId)
+            try:
+                if operator_index == 0:
+                    break
+                elif operator_index == 1:
+                    group.batch_execution_command(groupId)
+                elif operator_index == 2:
+                    group.batch_transport_file(groupId)
+            except FileNotFoundError as e:
+                print(e)
