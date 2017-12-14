@@ -4,7 +4,7 @@
 4.t.setDaemon(True)	:将当前线程设置为守护线程.(t为线程)
 5.threading.lock()	:建立一个锁对象.
 6.threading.lock().acquire() :获得一把锁
-7.threading.lock().release() :释放一把锁.
+7.threading.lock().release() :释放一把锁. 
 8.threading.BoundedSemaphore(number)	:最多允许number数量的线程同时运行.
 9.event.set()	#设置事件.
 10.event.clear()	#清空事件. 
@@ -30,5 +30,5 @@
 28.sftp = paramiko.SFTPClient.from_transport('transport')	#
 29.sftp.put()	#本地向服务器上传文件
 30.sftp.get()	#本地从服务器上下载文件.
-26.transport = 
+31.threading.get_indent()	#获取线程Id
 
