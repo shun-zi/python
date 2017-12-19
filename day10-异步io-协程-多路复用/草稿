@@ -1,0 +1,2 @@
+1.需要重写ftpServer端.(改个连接方式)
+2.server端的改动还需与client端相互对应.
