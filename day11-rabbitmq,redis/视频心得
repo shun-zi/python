@@ -1,0 +1,13 @@
+1.epoll和协程都是基于libevent.so库实现。
+2.进程QUEUE：父进程与子进程进行交互，或者同属于同一父进程下多个子进程进行交互。
+3.RabbitMQ：多种编程语言之间进行消息传递的中间代理库， 基于erlang语言开发的。
+4.fanout: 所有bind到此exchange的queue都可以接收消息
+5.direct: 通过routingKey和exchange决定的那个唯一的queue可以接收消息
+6.topic:所有符合routingKey(此时可以是一个表达式)的routingKey所bind的queue可以接收消息,#是接受所有信息.
+7.广播模式是实时的.
+8.fanout,direct,topic有着对接受信息划分的作用.
+9.redis是业界主流的key-value nosql 数据库之一.
+10.redis的操作:String 操作,Hash 操作,List 操作,Set 操作,Sort Set 操作
+11.redis的set, hash, list, 集合, 有序集合操作:http://www.cnblogs.com/wupeiqi/articles/5132791.html
+12.RPC:远程过程调用（Remote Procedure Call，缩写为RPC）是一个计算机通信协议。 该协议允许运行于一台计算机的程序调用另一台计算机的子程序，而程序员无需额外地为这个交互作用编程.(一台计算机发送一个命令到别的计算机执行后返回结果.)
+13.发布订阅	#http://www.cnblogs.com/alex3714/articles/6217453.html
