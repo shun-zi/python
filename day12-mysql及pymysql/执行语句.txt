@@ -1,0 +1,9 @@
+1.conn = pymysql.connect()	#连接计算机.
+2.cursor = conn.cursor() #创建游标.
+3.cursor.executeman()	#执行数据库命令.
+4.conn.commit()	#提交数据.
+5.cursor.close()	#撤销游标,
+6.conn.close()	#关闭连接.
+7.cursor.fetchone()	#获取第一行数据
+8.cursor.fetchmany()	#取多行数据
+9.cursor.fetchall()	#获取所有数据.
