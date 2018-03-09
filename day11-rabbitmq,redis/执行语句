@@ -1,0 +1,23 @@
+一.rabbitmq
+1.pika.BlockingConnection(pika.ConnectionParameters())	#建立一个最基本的socket连接。
+2.pika.BasicProperties() #... delivery_mode=2:消息持久化.
+2.channel = connection.channel()	#建立一个管道.
+3.channel.queue_declare()	#声明一个队列. durable:队列持久化
+4. channel.basic_publish()	#用于发送信息的. routing_key: 队列名字, body: 信息内容, 
+5.channel.basic_consume()	#用于接受消息. no_ack:不确认
+6.channel.start_consuming()	#开始收消息, 一直接受.
+7.ch.basic_ack(delivery_tag = method.delivery_tag)	#客户端手动给服务端发送确认. 
+8.channel.basic_qos()	#服务端监听指定客户端的队列.perfetch_count:处理完一定数量的消息后,服务端才能给该客户端继续发消息.
+9.channel.queue_declare() #不指定queue的名字,随机分配一个名字.exclusive=True:会在使用此queue的消费者断开后,自动将queue删除
+10.queue_name = result.method.queue	#将queue的名字取出.
+11.channel.queue_bind(exchange='logs',queue=queue_name)	#绑定转发器.
+12.'connection'.process_data_events()	#非阻塞版的start_consumer
+
+二.redis
+1.r = redis.Redis(host='10.211.55.4', port=6379) #连接redis
+2.redis.ConnectionPool(host='10.211.55.4', port=6379)	#将IP链接放入连接池中.
+3.pub = redis.Redis().pubsub	#开始订阅
+4.pub.subscribe()	#选择频道
+5.pub.parse_response()	#准备接受
+
+

@@ -1,0 +1,3 @@
+2017-11-26 21:01:31,711 - TEST-LOG - WARNING - warn message
+2017-11-26 21:01:31,711 - TEST-LOG - ERROR - error message
+2017-11-26 21:01:31,711 - TEST-LOG - CRITICAL - critical message

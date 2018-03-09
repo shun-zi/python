@@ -1,0 +1,4 @@
+1.celery 分布式任务队列
+2.集中式认证(ldap(linux上的)、ad(windows上的))
+3.用户行为审计
+4.traceback #打印出异常发生代码中哪行.

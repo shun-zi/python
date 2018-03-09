@@ -1,0 +1,20 @@
+1.multiprocessing.Process()	#实例化一个进程对象.
+2.os.getppid()	#获取父进程的ID
+3.os.getpid()	#获取当前进程的ID
+4.multiprocessing.Queue()	#实例化进程之间的Queue对象,实现多个进程之间数据的传输.
+5.multiprocessing.Pipe()	#实例化一个Pipe对象,实现多个进程之间数据的传输.
+6.manage = multiprocessing.Manager()	#实例化一个Manager对象,实现多个进程之间数据的共享.(默认加锁).
+7.manage.dict()	#生成一个字典,可在多个进程间共享和传递.
+8.manage.list()	#生成一个列表,可在多个进程间共享和传递.
+9.multiprocessing.Lock()	#申请进程锁(进程之间共享屏幕输出,加锁使得输出不会出错). 
+10.pool = multiprocessing.Pool()	#实例化一个进程池对象.
+11.pool.apply()	#往进程池中放入一个进程(同步执行,串行)
+12.pool.close()
+13.pool.join()	#进程池中进程执行完毕后再关闭.
+14.pool.apply_async()	#往进程池中放入一个进程(异步执行, 并行)
+15.greenlet.greenlet()	#启动一个协程.
+16.gevent.joinall()
+17.gevent.spawn()
+18.gevent.monkey.patch_all()	#把当前程序的所有io操作单独做上标记.
+19.server.setblocking(False)	#不阻塞
+20.select.select()	#监测链接,并且返回指定的链接.
