@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+      <meta charset="UTF-8" />
+      <meta name="description" content="the practice for day14" />
+      <meta http-equiv="X-UA-Compatible" content="IE=IE9;IE=IE8" />
+      <meta name="keyword" content="shunzi" />
+      <title>顺子网</title>
+      <link rel="stylesheet" href="../css/common.css"/>
+</head>
+<body style="margin: 0 auto">
+    <!-- 导航栏 -->
+    <div style="background-color:#dedddd; height:40px">
+        <div style="width:90%; margin:0 auto">
+            <div style="float:left; line-height:40px">收藏本站</div>
+            <div style="float:right; line-height:40px">
+                <a>登录</a>
+                <a>注册</a>
+                <a>我的订单</a>
+                <a>我的收藏</a>
+                <a>vip会员俱乐部</a>
+                <select id="i1" style="height:30px;font-size:17px">
+                    <option>客户服务</option>
+                </select>
+                <a>手机版</a>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+    <!-- 搜索栏 -->
+    <div style="background-color:white; height:100px">
+        <div style="background-color:white; height:100px; width:900px; margin:0 auto">
+            <div style="float:left; line-height:140px; width:200px">
+                <img src="favicon.ico"  style="height:50px;width:100px"/>
+            </div>
+            <div style="float:left; width:310px; margin:27px">
+                <input type="text" name="keyword" style="height:30px; width:240px" />
+                <input type="button" name="search" value="search" style="height:35px; font-size: 15px"/>
+                <span>热门搜索: 火龙果 瓜子</span>
+            </div>
+            <div style="float:left; height: 100px; width: 200px; margin-top:27px; margin-left:20px">
+                <select style="height: 36px; width: 100px; font-size: 20px; background-color: #fbfafa; margin-left:100px">
+                    <option>购物车</option>
+                </select>
+            </div>
+            <div style="clear:both"></div>
+        </div>
+    </div>
+    <!-- 功能导航栏 -->
+    <div style="background-color: red; color:white">
+        <div style="width:90%; margin: 0 auto">
+            <div style="float: left; height:50px; margin-right:230px; width: 1070px">
+                <a><h2 style="float: left;width: 185px;margin-left: 51px">全部商品分类</h2></a>
+                <a><h2 style="float:left; width: 110px;background-color: #b70c0c;text-align:center">首页</h2></a>
+                <a><h2 style="float:left;width: 136px;text-align: center">网上超市</h2></a>
+                <a><h2 style="float:left;width: 126px;text-align: center">水果超市</h2></a>
+                <a><h2 style="float:left;width: 126px;text-align: center">超级订餐</h2></a>
+                <a><h2 style="float:left;width: 126px;text-align: center">生活娱乐</h2></a>
+                <a><h2 style="float:left;width: 110px;text-align: center">研究院</h2></a>
+            </div>
+            <div style="float: right;background-color: #b70c0c">
+                <a><h2 style="float:left;text-align: center;width: 110px">研究院</h2></a>
+                <a><h2 style="float:left;text-align: center;width: 110px">研究院</h2></a>
+                <a><h2 style="float:left;text-align: center;width: 110px">论坛</h2></a>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+    <div>
+        <div>
+            <!-- sort fruit -->
+            <div style="float:left; margin-left:133px">
+                <table style="border: 2px solid #e0e0e0">
+                    <thead>
+                        <tr>
+                            <th>南方水果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+                <table style="border: 2px solid #e0e0e0; border-top:0px; width:181.5px; text-align:left">
+                    <thead>
+                        <tr>
+                            <th>南方水果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+
+                        </tr>
+                    </tbody>
+
+                </table>
+                <table style="border: 2px solid #e0e0e0; border-top:0px">
+                    <thead>
+                        <tr>
+                            <th>南方水果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style="border: 2px solid #e0e0e0; border-top:0px">
+                    <thead>
+                        <tr>
+                            <th>南方水果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style="border: 2px solid #e0e0e0; border-top:0px">
+                    <thead>
+                        <tr>
+                            <th>南方水果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style="border: 2px solid #e0e0e0; border-top:0px">
+                    <thead>
+                        <tr>
+                            <th>南方水果</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                            <td>火龙果</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <table style="border: 2px solid #e0e0e0; width:185px; text-align:left; margin-top: 20px">
+                    <thead>
+                        <tr >
+                            <th>热销排行榜</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="border-top: 2px solid green">content</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <!-- shopping shows -->
+            <div style="float: right; background-color:white; width:1488px; margin-right:97px">
+                <h5>福特>蒙迪欧>2.0T</h5>
+                <div style=" border-top: 4px solid red; border-right: 2px solid #e0e0e0;border-bottom: 2px solid #e0e0e0;border-left: 2px solid #e0e0e0">
+                    <div style="height:40px; border-bottom:2px solid #e0e0e0">
+                        <div style="float:left; margin-left: 40px; line-height:40px">你已选择:</div>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                    </div>
+                    <div style="height:40px; border-bottom:2px solid #e0e0e0">
+                        <div style="float:left; margin-left: 40px; width:68.45px; text-align:right; line-height:40px">材质:</div>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                    </div>
+                    <div style="height:40px; border-bottom: 2px solid #e0e0e0">
+                        <div style="float:left; margin-left: 40px; width:68.45px; text-align:right; line-height:40px">品牌:</div>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                    </div>
+                    <div style="height:40px">
+                        <div style="float:left; margin-left: 40px; width:68.45px; text-align:right; line-height:40px">风格:</div>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                        <a style="margin-left:30px; line-height:40px">水果</a>
+                    </div>
+                </div>
+                <div style="text-align:center">
+                    <a style="border: 2px solid #e0e0e0;padding:6px">更多选项&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;!</a>
+                </div>
+
+
+                <div style="border:2px solid #e0e0e0; margin-top:20px;font-size:23px">
+                    <div style="float:left; margin-left:10px">
+                        <span>排序:</span>
+                        <a style="margin-left:25px">价格</a>
+                        <img src="favicon.ico"/>
+                        <a style="margin-left:25px">销量</a>
+                        <img src="favicon.ico"/>
+                        <a style="margin-left:25px">最新</a>
+                        <img src="favicon.ico"/>
+                    </div>
+                    <div style="float:right;line-height:38px;width:110px">
+                        <span >1/675</span>
+                        <a style="margin-left:10px; border:1px solid #e0e0e0; font-weight:bolder">&lt;</a>
+                        <a style="border:1px solid #e0e0e0; font-weight:bolder">&gt;</a>
+                    </div>
+                    <div style="float:right;width:130px;border-right:2px solid #e0e0e0">
+                        <span style="color:red">共xx件商品</span>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+
+                <div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="float:left; width:367px; height:390px; margin:10px">
+                        <div style="width:95%">
+                            <div style="width:100%; height:300px; background-color:black;margin-left:9.5px"></div>
+                            <div style="width:100%; margin-left:9.5px; text-align:center">欧凯隆 景德镇欧凯隆</div>
+                            <div style="width:100%; margin-left:9.5px">
+                                <span style="color:red; font-size:25px">¥69.00</span>
+                                <div style="float:right;line-height:25px">
+                                    <a href="http:www.baidu.com">
+                                        <span style="line-height:20px;width:50px; height:25px; background-color:red; color:white; font-size:20px; float:right;">
+                                            买
+                                        </span>
+                                    </a>
+                                    <input type="button" value="+"/>
+                                    <input type="text" value="1" style="width:70px"/>
+                                    <input type="button" value="-" style="margin-right:5px"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="clear:both"></div>
+                </div>
+            </div>
+        </div>
+        <div style="clear: both"></div>
+    </div>
+
+</body>
+</html>
