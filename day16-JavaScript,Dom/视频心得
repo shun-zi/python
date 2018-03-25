@@ -1,0 +1,160 @@
+作业问题:
+	1.大框架用float排好.
+	2.细节方面position处理.
+	3.网上找模板,bootstrap模板,
+
+额外：	1.图标下载	#fontesome.io
+	2.javascript程序的运行:词法分析阶段,语句执行阶段.
+
+1.Html:
+	一大堆标签。块级标签，行内标签。
+2.Css:
+	主站-:
+	      <div class="pg-header"><div/>
+	      <div class="pg-content"><div/>
+	      <div class="pg-footer"><div/>
+	后台管理：
+	  position:
+	      fiexd
+	      relative
+	      absolute	#第一次定位，可以在指定位置。滚轮滚动时，则不能够在指定位置。
+	  
+	   a.
+	      左侧菜单跟随滚动条
+	   b.
+	      左侧菜单以及上下不动。	
+	      		     
+3.javascript:
+	8.函数：
+	   普通函数：
+		function func(){
+			}
+	   匿名函数：
+	   	（再定义的时候直接调用）
+
+	   自执行函数：
+		(function(arg)){
+			console.log(arg);
+			}(1)	#‘1’为参数。
+	9.序列化：
+	   JSON.stringify()	#将对象转换为字符串
+	   JSON.parse()		#将字符串转换为对象类型.
+
+	10.转义:
+	   客户端(cookie)	=>>	服务器端
+	   将数据经过转义后,保存在cookie.
+	   decodeURI( )                   #URl中未转义的字符
+	   decodeURIComponent( )   #URI组件中的未转义字符
+	   encodeURI( )                   #URI中的转义字符
+	   encodeURIComponent( )   #转义URI组件中的字符
+	11.eval:
+	   python:
+		val = eval(表达式)
+		      exec(执行代码)	#拿不到返回值
+	   JavaScript:
+		eval	#Python中eval和exec的合集，既可以编译代码也可以获取返回值。
+	12.时间
+	   Data类
+	   var d = new Data()
+	   d.getXXX	获取
+	   d.setXXX	设置	
+	13.作用域:
+	   1.
+	     其他语言:以代码块作为作用域.
+	     python:以函数作为作用域.
+	     JavaScript:以函数作为作用域.
+	   2.函数的作用域在函数未被调用之前,已经创建.
+	      function func(){
+		}
+	   3.函数的作用域存在作用域链,并且也是在被调用之前创建.		
+	      function func(){
+		function inner(){
+			}
+		} 	 
+	   4.函数内局部变量提前声明.
+	14.JavaScript面向对象.
+	   a.this代指对象(python self)	#谁调用包含this的函数，这个this就指向谁。
+	   b.创建对象时,new 函数()
+	   c.原型:(方法定义执行一次,节省资源.)
+		function Foo(n){
+			this.name = n;
+			}
+		# Foo的原型
+		Foo.prototype = {
+			'sayName':function(){
+				console.log(this.name)
+				}
+		}
+4.DOM:
+	查找:
+	   直接查找:
+		var obj = document.getElementById('i1')
+	   间接查找:
+		文件内容操作:
+	   	    innerText	#仅获得文本
+		    innerHTML	#获得全内容
+		    value:
+			input	#value获取当前标签中的值
+			select	#获取选中的value值(selectedIndex)
+			textarea 	#value获取当前标签的值.
+	   样式操作：
+	   	className
+		classList
+			classList.add
+			classList.remove
+		
+		obj.style.fontSize='16px'	#设置指定标签的样式。
+
+	   属性操作：
+		setAttributes
+		attributes
+		getAttributes	
+		removeAttributes
+
+	   创建标签，并添加到HTML中：
+		a.字符串形式
+		b.对象的方式
+			document.createElement('div')
+			'obj'.appendChild(tag)
+
+	   提交表单
+		任何标签通过DOM都可以提交表单。
+		document.getElementById('form').submit()
+
+
+	   其他：
+	   	console.log                 输出框
+	   	alert                       弹出框
+	   	confirm                     确认框，返回true或false
+  
+	   	// URL和刷新
+	   	location.href               获取URL
+	   	location.href = "url"       重定向
+	   	location.reload()           重新加载	
+		
+		setInterval                 多次定时器
+		clearInterval               清除多次定时器
+		setTimeout                  单次定时器
+		clearTimeout                清除单次定时器
+
+	事件：
+	   onclick, onblur, onfocus
+	   绑定事件两种方式：
+		a.直接标签绑定
+		b.先获取Dom对象，然后进行绑定。
+	   this，当前触发事件的标签。
+		a.第一种绑定方式。
+		    <input type='button' onclick='ClickOn(this)'>
+		    function ClickOn(self){
+			// self 当前点击的标签
+			}
+
+		b.第二种绑定方式
+		    <input type='button'>
+		    document.getElementById('xx').onclick = function(){
+			// this 代指当前点击的标签
+			}
+		c.第三种绑定方式.
+		    .addEventListener('click',function(){...},false)	#可以在一个标签中执行多个绑定事件.第三参数'false'为冒泡输出,'true'为捕捉输出.
+		
+5.JQuery:

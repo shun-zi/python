@@ -1,0 +1,15 @@
+.c1{
+    position: fixed;
+    top: 34%;
+    left: 38%;
+    width: 200px;
+    height: 200px;
+}
+
+.c1 .s1{
+    font-size: 31px;
+}
+
+.c1 .s2{
+    position: absolute;
+}
