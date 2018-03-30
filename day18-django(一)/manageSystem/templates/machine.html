@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>manageMachine</title>
+    <link rel="stylesheet" href="../statics/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="../statics/css/bootstrap.css " />
+
+    <link rel="stylesheet" href="../statics/css/machine.css" />
+    <style>
+        .dialog1{
+            position: fixed;
+            width: 400px;
+            height: 500px;
+            top: 34%;
+            left: 30%;
+            background-color: white;
+            z-index: 3;
+        }
+        .dialog1 .input-group-addon{
+            width: 87px;
+        }
+    </style>
+
+</head>
+<body style="padding: 0;">
+    <div class="navigation">
+        <nav class="navbar navbar-default">
+          <div style="float: left;" class="container-fluid">
+            <div style="height:75px;" class="navbar-header">
+              <a class="navbar-brand" href="#">
+                <img alt="Brand" src="12.png">
+              </a>
+            </div>
+          </div>
+            <div style="float: right; width: 900px" class="container-fluid">
+                <!-- Brand and toggle get grouped for better mobile display -->
+                <div class="navbar-header">
+                  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                  </button>
+                  <a class="navbar-brand" href="#">Brand</a>
+                </div>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                  <ul class="nav navbar-nav">
+                    <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li>
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">One more separated link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                  <form class="navbar-form navbar-left">
+                    <div class="form-group">
+                      <input type="text" class="form-control" placeholder="Search">
+                    </div>
+                    <button type="submit" class="btn btn-default">Submit</button>
+                  </form>
+                  <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#">Link</a></li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                      <ul class="dropdown-menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li role="separator" class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                      </ul>
+                    </li>
+                  </ul>
+                </div><!-- /.navbar-collapse -->
+              </div><!-- /.container-fluid -->
+            <div style="clear: both;"></div>
+        </nav>
+    </div>
+
+    <div class="body">
+        <div class="menu1">
+            <div class="title">Menu</div>
+            <div class="menu-item" content="1">主机信息</div>
+            <div class="menu-item" content="2">菜单2</div>
+            <div class="menu-item" content="3">菜单3</div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="content">
+            <div class="content-item hide" menu="1">
+                <div class="title">
+                    machine information
+                </div>
+                <div class="information">
+                    <table border="1">
+                        <thead>
+                            <tr>
+                                <th style="text-align: center">id</th>
+                                <th style="text-align: center">hostname</th>
+                                <th style="text-align: center">ip</th>
+                                <th style="text-align: center">port</th>
+                                <th style="text-align: center"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {% for machine in inf_list %}
+                                <tr>
+                                    <td style="text-align: center" width="198" height="30">{{ machine.id }}</td>
+                                    <td style="text-align: center" width="198" height="30">{{ machine.hostname }}</td>
+                                    <td style="text-align: center" width="198" height="30"> {{ machine.ip }}</td>
+                                    <td style="text-align: center" width="198" height="30">{{ machine.port }}</td>
+                                    <td style="text-align: center" width="198" height="30">
+                                        <form action="/detail/" method="get">
+                                            <input style="display: none;" type="text" name="id" value={{ machine.id }}>
+                                            <input type="submit" value="查看详情" >
+                                        </form>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+                <div class="operation" style="float: right">
+                    <div>
+                        <input type="button" value="添加">
+                        <input type="button" value="删除">
+                    </div>
+                </div>
+
+            </div>
+            <div class="content-item hide" menu="2">内容2</div>
+            <div class="content-item hide" menu="3">内容3</div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+
+    <div class="shadow hide"></div>
+    <div class="dialog1 hide">
+        <form action="/machine/" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">需要删除的id</span>
+              <input name="id" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div>
+                <input type="submit" value="确定" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+    <div class="dialog hide">
+        <form action="/machine/" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">hostname</span>
+              <input name="hostname" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">ip</span>
+              <input name="ip" type="text" class="form-control" placeholder="Ip" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">port</span>
+              <input name="port" type="text" class="form-control" placeholder="Port" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">power</span>
+              <input name="power" type="text" class="form-control" placeholder="Power" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">a</span>
+              <input name="a" type="text" class="form-control" placeholder="A" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">b</span>
+              <input name="b" type="text" class="form-control" placeholder="B" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">c</span>
+              <input name="c" type="text" class="form-control" placeholder="C" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">d</span>
+              <input name="d" type="text" class="form-control" placeholder="D" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div>
+                <input type="submit" value="确定" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+
+    </div>
+
+    <script src="../statics/js/jquery-1.12.4.js"></script>
+    <!-- <script type="text/javascript" src="../statics/js/machine.js"></script> -->
+    <script>
+        (function ($) {
+            //给菜单标签绑定click事件
+            $('.menu-item').click(function () {
+                //给点击到菜单标签改变背景颜色,其他菜单背景颜色隐藏
+                $('.menu-item').css('background-color', '');
+                $(this).css('background-color', 'green');
+
+                //只显示相应菜单的内容
+                var content_id = $(this).attr('content');
+                $(".content-item").addClass('hide');
+                $(".content-item[menu=" + content_id + "]").removeClass('hide');
+            })
+
+             //当鼠标移动到查看详情时,改变字体颜色
+             $(".content .information tbody tr td:last-child").each(function () {
+                 $(this).mouseover(function () {
+                     $(this).css('color', 'blue');
+                 })
+                 $(this).mouseleave(function () {
+                     $(this).css('color', 'black');
+                 })
+            })
+
+            //给添加按钮绑定click事件
+            $(":button[value='添加']").click(function () {
+            $(".shadow").toggleClass('hide')
+            $(".dialog").toggleClass('hide')
+            })
+            //给取消键绑定click事件
+            $(".dialog :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide')
+                $(".dialog").toggleClass('hide')
+            })
+
+
+            //给删除键绑定click事件
+            $(":button[value='删除']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".dialog1").toggleClass('hide');
+            })
+            $(".dialog1 :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide')
+                $(".dialog1").toggleClass('hide')
+            })
+        }(jQuery))
+    </script>
+</body>
+</html>
