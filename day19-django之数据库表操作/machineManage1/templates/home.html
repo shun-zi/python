@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>home</title>
+    <link rel="stylesheet" href="../../statics/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="../../statics/css/bootstrap.css " />
+    <link rel="stylesheet" href="../../statics/css/home.css" charset="UTF-8"/>
+    <style>
+        .menu-table .table .col-md-8{
+            background-image: url('../../statics/image/2.jpg');
+            width: 980px;
+            height: 552px;
+            margin-left: 20px;
+            margin-top: 0;
+        }
+
+        .menu-table  .table .title{
+            font-size: 40px;
+            height: 80px;
+            border: 1px solid #ccddf5;
+            line-height: 80px;
+            display: inline-block;
+        }
+
+
+        .menu-table  .table .glyphicon-modal-window{
+            color: blue;
+        }
+
+        .shadow{
+            position: fixed;
+            background-color: #dce5ff;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .menu-table .table .glyphicon-plus, .glyphicon-minus{
+            color: blue;
+
+        }
+
+        .addGroup-box, .addMachine-box, .deleteGroup-box, .deleteMachine-box{
+            position: fixed;
+            width: 400px;
+            height: 500px;
+            top: 20%;
+            left: 39%;
+            background-color: white;
+            z-index: 2;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="navigation">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                  <a href="#" class="=dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="navbar-form navbar-left">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <!-- 内容 -->
+    <div class="content" >
+        <div class="blank"></div>
+        <div class="menu-table">
+            <!-- 菜单栏 -->
+            <div class="row menu">
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="active"><a>Home</a></li>
+                    <li role="presentation"><a>machines</a></li>
+                    <li role="presentation"><a>machine_groups</a></li>
+                </ul>
+            </div>
+            <!-- 信息表格 -->
+            <div class="row table">
+                <!-- home显示 -->
+                <div class="col-md-8 header">
+                    <h1>Welcome!</h1>
+                    <h2>You can qurey machines information and groups of machine information</h2>
+                </div>
+                <!-- machines显示 -->
+                <div class="machines hide">
+                    <div style="background-color: white">
+                        <div class="title">
+                        <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
+                        <span>MACHINES</span>
+                        </div>
+                    </div>
+                    <div class="add" style="background-color: white;">
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">ADD</span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">DELETE</span>
+                        </button>
+                    </div>
+                    <div>
+                        <table border="1px">
+                            <thead>
+                                <tr style="background-color: white">
+                                    <th class="group_th">id</th>
+                                    <th class="group_th">hostname</th>
+                                    <th class="group_th">ip</th>
+                                    <th class="group_th">port</th>
+                                    <th class="group_th">power</th>
+                                    <th class="group_th">machine_group_id</th>
+                                    <th class="group_op">opreations</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for machine in machines %}
+                                    <tr style="background-color: white">
+                                        <td class="group_th">{{ machine.id }}</td>
+                                        <td class="group_th">{{ machine.hostname }}</td>
+                                        <td class="group_th">{{ machine.ip }}</td>
+                                        <td class="group_th">{{ machine.port }}</td>
+                                        <td class="group_th">{{ machine.power }}</td>
+                                        <td class="group_th">{{ machine.machine_group_id }}</td>
+                                        <td class="group_op">
+                                            <button class="edit" type="button" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">edit</span>
+                                            </button>
+                                            <button class="save" type="submit" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-repeat" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">save</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- machine_groups显示 -->
+                <div class="groups hide">
+                    <div style="background-color: white">
+                        <div class="title">
+                        <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
+                        <span>MACHINE_GROUPS</span>
+                        </div>
+                    </div>
+                    <div class="add" style="background-color: white;">
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">ADD</span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">DELETE</span>
+                        </button>
+                    </div>
+                    <div>
+                        <table border="1px">
+                            <thead>
+                                <tr style="background-color: white">
+                                    <th class="group_th">id</th>
+                                    <th class="group_th">name</th>
+                                    <th class="group_th">create_time</th>
+                                    <th class="group_op">opreations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for group in groups %}
+                                    <tr style="background-color: white">
+                                        <td class="group_th">{{ group.id }}</td>
+                                        <td class="group_th">{{ group.name }}</td>
+                                        <td class="group_th">{{ group.create_time }}</td>
+                                        <td class="group_op">
+                                            <button class="edit" type="button" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">edit</span>
+                                            </button>
+                                            <button class="save" type="submit" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-repeat" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">save</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+
+    <!-- 阴影遮罩框 -->
+    <div class="shadow hide"></div>
+
+    <!-- 添加主机分组的模态对话框 -->
+    <div class="addGroup-box hide">
+        <form action="/machine/home/?operation=add&db=machienGroup" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">name</span>
+              <input name="name" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">create_time</span>
+              <input name="create_time" type="text" class="form-control" placeholder="Ip" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div>
+                <input type="submit" value="确定" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <!-- 添加主机的模态对话框 -->
+    <div class="addMachine-box hide">
+        <form action="/machine/home/?operation=add&db=machine" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">hostname</span>
+              <input name="hostname" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">ip</span>
+              <input name="ip" type="text" class="form-control" placeholder="Ip" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">port</span>
+              <input name="port" type="text" class="form-control" placeholder="Port" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">power</span>
+              <input name="power" type="text" class="form-control" placeholder="Power" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">group</span>
+                <select name="group_id" style="height: 28px">
+                    {% for group in groups %}
+                        <option value={{ group.id }}>{{ group.name }}</option>
+                    {% endfor %}
+
+                </select>
+            </div>
+
+            <div>
+                <input type="submit" value="确定" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <!-- 主机分组删除的模态对话框 -->
+    <div class="deleteGroup-box hide">
+        <form action="/machine/home/?operation=delete&db=machineGroup" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">id</span>
+              <input name="id" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+
+            <div>
+                <input type="submit" value="确定" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <!-- 主机删除的模态对话框 -->
+    <div class="deleteMachine-box hide">
+        <form action="/machine/home/?operation=delete&db=machine" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">id</span>
+              <input name="id" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+
+            <div>
+                <input type="submit" value="确定" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <script src="../../statics/js/jquery-1.12.4.js"></script>
+    <!-- <script src="../../statics/js/home.js"></script> -->
+    <script>
+        (function ($) {
+
+            //给machine_groups转链接加上click事件
+            $(".menu-table li[role='presentation'] a:eq(2)").click(function () {
+                    $(".table .groups").removeClass('hide');
+                    $(".table .machines").addClass('hide');
+                    $(".table .header").addClass('hide');
+                });
+
+            //给machines转链接加上click事件
+            $(".menu-table li[role='presentation'] a:eq(1)").click(function () {
+                    $(".table .machines").removeClass('hide');
+                    $(".table .groups").addClass('hide');
+                    $(".table .header").addClass('hide');
+                });
+            //给主机分组添加按钮绑定click事件
+            $(".content .table .groups .add :button:eq(0)").click(function () {
+                    $(".shadow").toggleClass('hide');
+                    $(".addGroup-box").toggleClass('hide');
+            });
+
+            //给主机添加按钮绑定click事件
+            $(".content .table .machines .add :button:eq(0)").click(function () {
+                    $(".shadow").toggleClass('hide');
+                    $(".addMachine-box").toggleClass('hide');
+            });
+
+
+            //给主机分组添加模态框中的取消键绑定click事件
+            $(".addGroup-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".addGroup-box").toggleClass('hide');
+            });
+
+            //给主机添加模态框中的取消键绑定click事件
+            $(".addMachine-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".addMachine-box").toggleClass('hide');
+            });
+
+            //给主机分组删除键绑定click事件
+            $(".content .table .groups .add :button:eq(1)").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteGroup-box").toggleClass('hide');
+            });
+
+            //给主机删除键绑定click事件
+            $(".content .table .machines .add :button:eq(1)").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteMachine-box").toggleClass('hide');
+            });
+
+            //给主机分组删除模态框中的取消键绑定click事件
+            $(".deleteGroup-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteGroup-box").toggleClass('hide');
+            });
+
+            //给主机删除模态框中的取消键绑定click事件
+            $(".deleteMachine-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteMachine-box").toggleClass('hide');
+            });
+
+            allow_groupEdit = 1;
+            // 给主机分组edit添加click点击事件
+            $(".menu-table .groups .edit").click(function () {
+                if(allow_groupEdit==1){
+                    //取出主机分组的id和名字内容
+                    var id_old_label = $(this).parent().siblings(".group_th:eq(0)");
+                    var name_old_label = $(this).parent().siblings(".group_th:eq(1)");
+                    var id = id_old_label.text();
+                    var name = name_old_label.text();
+                    var action_url = "/machine/home/?operation=update&db=machineGroup&id=" + id
+                    var new_form = "<form action='/machine/home/?operation=update' method='post'></form>";
+                    var new_id = "<input type='text' name='id' disabled='disabled' value=" + id + ">";
+                    var new_name = "<input type='text' name='name' required='true' value=" + name + ">";
+
+                    // 插入表单
+                    $(this).parent().parent().parent().parent().wrap(new_form).parent().attr("action", action_url);
+                    //$(this).parent().parent().parent().parent().parent().attr("action", action_url)
+
+
+                    //清空标签
+                    id_old_label.empty();
+                    name_old_label.empty();
+
+                    //插入标签
+                    id_old_label.append(new_id);
+                    name_old_label.append(new_name);
+
+                    allow_groupEdit = 0;
+                }
+                else{
+                  alert("正在编辑数据");
+                }
+
+            });
+
+            allow_machineEdit = 1;
+            // 给主机edit添加click点击事件
+            $(".menu-table .machines .edit").click(function () {
+                if(allow_machineEdit==1){
+                    //取出主机分组的id和名字内容
+                    var id_old_label = $(this).parent().siblings(".group_th:eq(0)");
+                    var hostname_old_label = $(this).parent().siblings(".group_th:eq(1)");
+                    var ip_old_label = $(this).parent().siblings(".group_th:eq(2)");
+                    var port_old_label = $(this).parent().siblings(".group_th:eq(3)");
+                    var power_old_label = $(this).parent().siblings(".group_th:eq(4)");
+                    var groupId_old_label = $(this).parent().siblings(".group_th:eq(5)");
+                    var id = id_old_label.text();
+
+                    var hostname = hostname_old_label.text();
+                    var ip = ip_old_label.text();
+                    var port = port_old_label.text();
+                    var power = power_old_label.text();
+                    var group_id = groupId_old_label.text();
+                    console.log(group_id);
+
+                    var action_url = "/machine/home/?operation=update&db=machine&id=" + id
+                    var new_form = "<form action='/machine/home/?operation=update' method='post'></form>";
+                    var new_id = "<input type='text' name='id' style='width:120px' disabled='disabled' value=" + id + ">";
+                    var new_hostname = "<input type='text' style='width:120px' name='hostname' required='true' value=" + hostname + ">";
+                    var new_ip = "<input type='text' style='width:120px' name='ip' required='true' value=" + ip + ">";
+                    var new_port = "<input type='text' style='width:120px' name='port' required='true' value=" + port + ">";
+                    var new_power = "<input type='text' style='width:120px' name='power' required='true' value=" + power + ">";
+                    var new_group = "<select name='group_id'>{% for group in groups %}<option value='{{ group.id }}'>{{ group.name }}</option>{% endfor %}</select>"
+
+                    // 插入表单
+                    $(this).parent().parent().parent().parent().wrap(new_form).parent().attr("action", action_url);
+                    //$(this).parent().parent().parent().parent().parent().attr("action", action_url)
+
+
+                    //清空标签
+                    id_old_label.empty();
+                    hostname_old_label.empty();
+                    ip_old_label.empty();
+                    port_old_label.empty();
+                    power_old_label.empty();
+                    groupId_old_label.empty();
+
+                    //插入标签
+                    id_old_label.append(new_id);
+                    hostname_old_label.append(new_hostname);
+                    ip_old_label.append(new_ip);
+                    port_old_label.append(new_port);
+                    power_old_label.append(new_power);
+                    groupId_old_label.append(new_group);
+
+
+                    allow_machineEdit = 0;
+                }
+                else{
+                  alert("正在编辑数据");
+                }
+
+            });
+
+        })(jQuery)
+    </script>
+</body>
+</html>
