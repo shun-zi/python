@@ -1,0 +1,158 @@
+         .header{
+            text-align: left;
+            color: white;
+        }
+
+         .hide{
+             display: none;
+         }
+
+        .content .blank{
+            width: 990px;
+            height: 100px;
+            margin:-20px auto;
+            z-index: 1;
+         }
+
+        .navigation .navbar{
+            border-radius: 0%
+        }
+
+        .content{
+            background-image: url('../image/1.jpg');
+            width: 100%;
+            height: 1200px;
+            background-size: 100%;
+            border: 0;
+            z-index: 0;
+        }
+
+        .content .menu-table{
+            margin:-20px auto;
+            width: 990px;
+            height: 600px;
+            z-index: 1;
+            background-color: white ;
+        }
+
+        .menu-table .menu .nav-pills{
+            width: 990px;
+            padding: 0 13px;
+            margin: 0 auto;
+            z-index: 0;
+            background-color: #48e4ff;
+        }
+
+        .menu-table .menu .nav-pills li{
+            font-size: 20px;
+        }
+
+        .menu-table .table .groups{
+            width: 990px;
+            height: 552px;
+            margin-left: 15px;
+            background-color: rgba(195, 197, 255, 0.77);
+        }
+
+        .menu-table .table .add{
+            height: 40px;
+        }
+
+        .menu-table .table .btn-lg{
+            padding:4px 23px;
+            font-size: 16px;
+            border-radius: 0px;
+            margin-top: 4px;
+        }
+
+        .menu-table .table .glyphicon-plus, .glyphicon-minus{
+            color: blue;
+
+        }
+
+        .menu-table .table .group_th{
+            width: 100px;
+            text-align: center;
+        }
+
+        .menu-table .table .group_op{
+            width: 250px;
+        }
+
+        .menu-table  .table .host{
+            width: 990px;
+            height: 552px;
+            margin-left: 15px;
+            background-color: rgba(195, 197, 255, 0.77);
+            z-index: 1;
+
+        }
+
+        .menu-table  .table .title{
+            font-size: 40px;
+            height: 80px;
+            border: 1px solid #ccddf5;
+            line-height: 80px;
+            display: inline-block;
+        }
+
+
+        .menu-table  .table .glyphicon-modal-window{
+            color: blue;
+        }
+
+        .shadow{
+            position: fixed;
+            background-color: #dce5ff;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            opacity: 0.5;
+            z-index: 1;
+        }
+
+        .menu-table .table .col-md-8{
+            background-image: url('../../statics/image/2.jpg');
+            width: 980px;
+            height: 552px;
+            margin-left: 20px;
+            margin-top: 0;
+        }
+
+        .menu-table  .table .title{
+            font-size: 40px;
+            height: 80px;
+            border: 1px solid #ccddf5;
+            line-height: 80px;
+            display: inline-block;
+        }
+
+
+        .menu-table  .table .glyphicon-modal-window{
+            color: blue;
+        }
+
+        .shadow{
+            position: fixed;
+            background-color: #dce5ff;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .menu-table .table .glyphicon-plus, .glyphicon-minus{
+            color: blue;
+
+        }
+
+        .addApplication-box, .addHost-box, .deleteApplication-box, .deleteHost-box{
+            position: fixed;
+            width: 400px;
+            height: 500px;
+            top: 20%;
+            left: 39%;
+            background-color: white;
+            z-index: 2;
+        }
