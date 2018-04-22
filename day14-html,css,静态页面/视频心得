@@ -1,0 +1,176 @@
+1.html(赤裸的人身), css(穿上衣服,不能行动), js(人可以行动).
+2.HTML(一套浏览器认识的规则)
+     1.开发者:
+     	-写Html文件(充当模板)
+	-数据库获取数据,然后替换到html文件的指定位置.(Web框架)
+     2.本地测试
+	- 找到文件路径, 直接浏览器打开.
+	- pycharm打开测试
+     3.编写html文件.
+	-doctype对应关系
+	-html标签, 标签内部可以写属性,只能有一个
+	-注释:	<!-- 注释的内容 -->
+     4.标签分类
+	-自闭合标签	<meta charset="UTF-8">
+	-主动闭合标签	<html> </html>
+     5.head标签中
+	-<meta -> 编码,跳转,刷新,关键字,描述,IE兼容
+	-title标签
+	-<link /> 搞图标
+	-<style />
+	-<script>
+     6.body标签
+	-图标	&nbsp;	&gt;	&lt;
+	-p标签 	段落
+	-br标签	换行
+	====== 小总结 ======
+	   所有标签分为: 
+		块级标签: div(白板), H系列(加大加粗), p标签(段落和段落之间有间距)
+		行内标签: span(白板)
+	   标签之间可以嵌套
+	   标签存在的意义,某种程度来说定位操作, css操作, js操作.
+	   ps:chorm审查元素的使用:
+
+		-定位元素
+		-查看样式
+	-input系列
+	   input type='text'		-name属性, value="赵凡"
+	   input type='password'	-name属性, value="赵凡"
+	   input type='submit'		-value='提交' 提交按钮,表单
+	   input type='button'		-value='登录' 按钮
+	   input type='radio'		-单选框 value, checked="checked"(默认值), name属性(name相同则互斥)
+	   input type='checkbox'	-复选框 value, checked="checked", name属性(批量获取数据)
+	   input type='file'	- 依赖form表单的一个属性. enctype="multipart/form-data"
+	   input type='reset'	- 重置
+	- <textarea >默认值</textarea>	- name属性
+	- select标签	-name,内部option value, size, muiltiple
+	- a标签
+	    - 跳转
+	    - 锚	href= '#某个标签的ID'	标签的ID不允许重复
+	- img
+	    - src
+	    - alt
+	    - title
+	- 列表
+	    - ul
+	      -li
+	    - ol
+	      -li
+	    - dl
+	      -dt
+	      -dd
+	- 表格
+	    -table
+		-thead
+		    -tr
+			-th
+		-tbody
+		    -tr
+			-td
+			属性:colspan = '2'(列合并), rowspan= '2'(行合并)
+	- label
+	    用于点击文件,使得关联的标签获取光标.
+	    <label for="username">用户名: </label>
+	    <label id="username" type="text" name="user" />
+	-fieldset
+	    -legend
+     	- form标签
+	    -action属性		-提交表单后跳转到的页面
+	    -method属性		-提交表单的方式
+		-get	#提交表单时,会将用户的输入拼接到url后面.(内容放到url上)
+		-post	#内容不会显示url上.
+
+     - 20个标签
+3.CSS
+     在标签上设置style属性
+	background-color: #2459a2;
+	height: 48px;
+	... 
+     编写css样式:
+	1.标签的style属性
+	2.写在head里面,style标签中编写样式.
+	     -id选择器
+		#i1{
+		  background-color: #2459a2;
+		  height: 48px;
+		}
+	     -class选择器(推荐使用)
+		.名称{
+		   ...
+		}
+		<标签 class='名称'> </标签>
+	     -标签选择器
+		div{
+		  ...
+		}
+		所有div设置上此样式
+	     -层级选择器(空格)(推荐使用)
+		.c1 .c2 div{
+		   ...
+		}
+	     -组合选择器(逗号)(推荐使用)
+		#i1,.c2,div{
+		  ...
+		}
+	     -属性选择器(推荐使用)
+		对选择到的标签再通过属性再进行一次筛选
+		.c1[n='alex']{ width:100px; height:200px; }
+	     ps:
+		优先级, 标签上style优先, 编写顺序, 就近原则.
+	2.5:css样式也可以写在单独文件中
+		<link rel='stylesheet' href='commons.css' />
+	3.注释
+	     /*...*/
+	4.边框
+	     - 宽度, 样式, 颜色  (border: 4px, dotted red;)
+	     - border-left
+	5.
+	     height,	高度  百分比
+	     width,	宽度  像素,  百分比
+	     text-align:center,	 水平方向居中
+	     line-height,	垂直方向根据标签高度居中
+	     color	字体颜色
+	     font-size	字体大小
+	     font-weight	字体加粗
+	6.float
+	     让标签浮起来, 块级标签也可以堆叠
+	     老子管不住:
+		<div style="clear: both;"></div>
+	7.display
+	     display: none;	-让标签消失
+	     display: inline(行内标签)
+	     display: block(块级标签)
+	     display: inline-block;
+		      具有inline,默认自己有多少占多少.
+		      具有block,可以设置高宽和宽度等.
+	     ******
+	     行内标签:无法设置高度,宽度, padding, margin
+	     块级标签:设置高度,宽度, padding, margin
+	8.padding margin(0, auto)
+		边距,
+		margin: 外边距
+		   -
+		padding: 内边距
+	9.position:
+	     fiexd => 固定在页面的某个位置
+     - 颜色
+     - 位置
+     ... 
+
+4.浏览器为客户端.
+5.服务端永远返回的是字符串
+
+
+6.作业问题:
+	1.自适应和改变大小变形
+		2.左右滚动条的出现
+		3.宽度,百分比(会随浏览器的大小改变而变形)
+		4.解决方法: 变形:在最外层加个实际宽度值.(左右滚动条出现)
+			    自适应:media
+	5.默认img标签,有一个1px的边框.
+	6.解决办法:
+		img{
+		   border:0;
+		}
+		
+			

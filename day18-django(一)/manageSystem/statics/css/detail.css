@@ -1,0 +1,20 @@
+.information{
+    width: 600px;
+    margin: 200px auto;
+}
+
+.list-group1{
+    float: left;
+}
+
+.list-group1 .list-group-item{
+    width: 100px;
+}
+
+.list-group2{
+    float: right;
+}
+
+.list-group2 .list-group-item{
+    width: 460px;
+}

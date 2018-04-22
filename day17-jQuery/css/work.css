@@ -1,0 +1,17 @@
+.item .title{
+    background-color: cadetblue;
+    color: white;
+    font-size: 25px;
+}
+.menu{
+    width:300px;
+}
+.hide{
+    display: none;
+}
+
+.edit{
+    width: 100px;
+    height: 40px;
+    background-color: aqua;
+}

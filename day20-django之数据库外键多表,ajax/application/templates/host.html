@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>host</title>
+    <link rel="stylesheet" href="../../statics/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="../../statics/css/bootstrap.css " />
+    <link rel="stylesheet" href="../../statics/css/host.css" charset="UTF-8"/>
+    <style>
+        .menu-table .table .col-md-8{
+            background-image: url('../../statics/image/2.jpg');
+            width: 980px;
+            height: 552px;
+            margin-left: 20px;
+            margin-top: 0;
+        }
+
+        .menu-table  .table .title{
+            font-size: 40px;
+            height: 80px;
+            border: 1px solid #ccddf5;
+            line-height: 80px;
+            display: inline-block;
+        }
+
+
+        .menu-table  .table .glyphicon-modal-window{
+            color: blue;
+        }
+
+        .shadow{
+            position: fixed;
+            background-color: #dce5ff;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+
+        .menu-table .table .glyphicon-plus, .glyphicon-minus{
+            color: blue;
+
+        }
+
+        .addApplication-box, .addHost-box, .deleteApplication-box, .deleteHost-box{
+            position: fixed;
+            width: 400px;
+            height: 500px;
+            top: 20%;
+            left: 39%;
+            background-color: white;
+            z-index: 2;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- 导航栏 -->
+    <div class="navigation">
+        <nav class="navbar navbar-inverse">
+          <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="#">Brand</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+              <ul class="nav navbar-nav">
+                <!-- <li class="active"><a href="#">Link <span class="sr-only">(current)</span></a></li> -->
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                  <a href="#" class="=dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">One more separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+              <form class="navbar-form navbar-left">
+                <div class="form-group">
+                  <input type="text" class="form-control" placeholder="Search">
+                </div>
+                <button type="submit" class="btn btn-default">Submit</button>
+              </form>
+              <ul class="nav navbar-nav navbar-right">
+                <li><a href="#">Link</a></li>
+                <li class="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
+                  <ul class="dropdown-menu">
+                    <li><a href="#">Action</a></li>
+                    <li><a href="#">Another action</a></li>
+                    <li><a href="#">Something else here</a></li>
+                    <li role="separator" class="divider"></li>
+                    <li><a href="#">Separated link</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div><!-- /.navbar-collapse -->
+          </div><!-- /.container-fluid -->
+        </nav>
+    </div>
+    <!-- 内容 -->
+    <div class="content" >
+        <div class="blank"></div>
+        <div class="menu-table">
+            <!-- 菜单栏 -->
+            <div class="row menu">
+                <ul class="nav nav-pills">
+                    <li role="presentation" class="active"><a>Home</a></li>
+                    <li role="presentation"><a>hosts</a></li>
+                    <li role="presentation"><a>applications</a></li>
+                </ul>
+            </div>
+            <!-- 信息表格 -->
+            <div class="row table">
+                <!-- home显示 -->
+                <div class="col-md-8 header">
+                    <h1>Welcome!</h1>
+                    <h2>You can qurey host information and applications information</h2>
+                </div>
+                <!-- host显示 -->
+                <div class="host hide">
+                    <div style="background-color: white">
+                        <div class="title">
+                        <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
+                        <span>HOSTS</span>
+                        </div>
+                    </div>
+                    <div class="add" style="background-color: white;">
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">ADD</span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">DELETE</span>
+                        </button>
+                    </div>
+                    <div>
+                        <table border="1px">
+                            <thead>
+                                <tr style="background-color: white">
+                                    <th class="group_th">hostname</th>
+                                    <th class="group_th">ip</th>
+                                    <th class="group_th">port</th>
+                                    <th class="group_th">business_id</th>
+                                    <th class="group_op">opreations</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for host in hosts %}
+                                    <tr hid="{{ host.id }}" style="background-color: white">
+                                        <td class="group_th">{{ host.hostname }}</td>
+                                        <td class="group_th">{{ host.ip }}</td>
+                                        <td class="group_th">{{ host.port }}</td>
+                                        <td class="group_th" bid="{{ host.business.id }}">{{ host.business.caption }}</td>
+                                        <td class="group_op">
+                                            <button class="edit" type="button" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">edit</span>
+                                            </button>
+                                            <button class="save" type="button" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-repeat" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">save</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <!-- applications显示 -->
+                <div class="groups hide">
+                    <div style="background-color: white">
+                        <div class="title">
+                        <span class="glyphicon glyphicon-modal-window" aria-hidden="true"></span>
+                        <span>APPLICATIONS</span>
+                        </div>
+                    </div>
+                    <div class="add" style="background-color: white;">
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">ADD</span>
+                        </button>
+                        <button type="button" class="btn btn-default btn-lg">
+                            <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                            <span style="font-weight: bold">DELETE</span>
+                        </button>
+                    </div>
+                    <div>
+                        <table border="1px">
+                            <thead>
+                                <tr style="background-color: white">
+                                    <th class="group_th">name</th>
+                                    <th class="group_th">host_list</th>
+                                    <th class="group_op">opreations</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for application in applications %}
+                                    <tr aid="{{ application.id }}"  style="background-color: white">
+                                        <td class="group_th">{{ application.name }}</td>
+                                        <td class="group_th" style="width: 150px">
+                                            {% for h in application.r.all %}
+                                                <span hid="{{ h.id }}">{{ h.hostname}}</span>
+                                            {% endfor %}
+                                        </td>
+                                        <td class="group_op">
+                                            <button class="edit" type="button" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-pencil" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">edit</span>
+                                            </button>
+                                            <button class="save" type="button" class="btn btn-default btn-lg">
+                                                <span class="glyphicon glyphicon-repeat" aria-hidden="true" style="color: blue"></span>
+                                                <span style="font-weight: bold">save</span>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+    </div>
+
+    <!-- 阴影遮罩框 -->
+    <div class="shadow hide"></div>
+
+    <!-- 添加应用分组的模态对话框 -->
+    <div class="addApplication-box hide">
+        <form id="add_form" action="/application/host/?operation=add&db=machienGroup" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">name</span>
+              <input name="name" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+            <span class="input-group-addon" style="height: 30px;width: 97px;">select_host</span>
+            <div class="input-group">
+                <select name="host" multiple>
+                    {% for host in hosts %} }
+                        <option value="{{ host.id }}">{{ host.hostname }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div>
+                <input type="submit" value="确定" />
+                 <input id="ajax_submit" type="button" value="提交" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <!-- 添加主机的模态对话框 -->
+    <div class="addHost-box hide">
+        <form id="add_form" action="/application/host/?operation=add&db=host" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">hostname</span>
+              <input name="hostname" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">ip</span>
+              <input name="ip" type="text" class="form-control" placeholder="Ip" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">port</span>
+              <input name="port" type="text" class="form-control" placeholder="Port" aria-describedby="basic-addon1" required="true">
+            </div>
+            <div class="input-group">
+                <span class="input-group-addon" id="basic-addon1">business</span>
+                <select name="business_id" style="height: 28px">
+                    {% for b in business %}
+                        <option value={{ b.id }}>{{ b.caption }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div>
+                <input type="submit" value="确定" />
+                <input id="ajax_submit" type="button" value="提交" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <!-- 应用删除的模态对话框 -->
+    <div class="deleteApplication-box hide">
+        <form id="delete_form" action="/application/host/?operation=delete&db=machineGroup" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">id</span>
+              <input name="id" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+
+            <div>
+                <input type="submit" value="确定" />
+                <input id="ajax_submit" type="button" value="提交" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <!-- 主机删除的模态对话框 -->
+    <div class="deleteHost-box hide">
+        <form id="delete_form" action="/application/host/?operation=delete&db=machine" method="post">
+            <div class="input-group">
+              <span class="input-group-addon" id="basic-addon1">id</span>
+              <input name="id" type="text" class="form-control" placeholder="Hostname" aria-describedby="basic-addon1" required="true">
+            </div>
+
+            <div>
+                <input type="submit" value="确定" />
+                <input id="ajax_submit" type="button" value="提交" />
+                <input type="button" value="取消" />
+            </div>
+        </form>
+    </div>
+
+    <script src="../../statics/js/jquery-1.12.4.js"></script>
+    <!-- <script src="../../statics/js/host.js"></script> -->
+    <<script>
+     (function ($) {
+
+            //给machine_groups转链接加上click事件
+            $(".menu-table li[role='presentation'] a:eq(2)").click(function () {
+                    $(".table .groups").removeClass('hide');
+                    $(".table .host").addClass('hide');
+                    $(".table .header").addClass('hide');
+                });
+
+            //给host转链接加上click事件
+            $(".menu-table li[role='presentation'] a:eq(1)").click(function () {
+                    $(".table .host").removeClass('hide');
+                    $(".table .groups").addClass('hide');
+                    $(".table .header").addClass('hide');
+                });
+            //给主机分组添加按钮绑定click事件
+            $(".content .table .groups .add :button:eq(0)").click(function () {
+                    $(".shadow").toggleClass('hide');
+                    $(".addApplication-box").toggleClass('hide');
+            });
+
+            //给主机添加按钮绑定click事件
+            $(".content .table .host .add :button:eq(0)").click(function () {
+                    $(".shadow").toggleClass('hide');
+                    $(".addHost-box").toggleClass('hide');
+            });
+
+
+            //给主机分组添加模态框中的取消键绑定click事件
+            $(".addApplication-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".addApplication-box").toggleClass('hide');
+            });
+
+            //给主机添加模态框中的取消键绑定click事件
+            $(".addHost-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".addHost-box").toggleClass('hide');
+            });
+
+            //给主机分组删除键绑定click事件
+            $(".content .table .groups .add :button:eq(1)").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteApplication-box").toggleClass('hide');
+            });
+
+            //给主机删除键绑定click事件
+            $(".content .table .host .add :button:eq(1)").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteHost-box").toggleClass('hide');
+            });
+
+            //给主机分组删除模态框中的取消键绑定click事件
+            $(".deleteApplication-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteApplication-box").toggleClass('hide');
+            });
+
+            //给主机删除模态框中的取消键绑定click事件
+            $(".deleteHost-box :button[value='取消']").click(function () {
+                $(".shadow").toggleClass('hide');
+                $(".deleteHost-box").toggleClass('hide');
+            });
+
+            allow_groupEdit = 1;
+            // 给主机分组edit添加click点击事件
+            $(".menu-table .groups .edit").click(function () {
+                if(allow_groupEdit==1){
+                    //取出主机分组的id和名字内容
+                    //var id_old_label = $(this).parent().siblings(".group_th:eq(0)");
+                    var host_list = [];
+                    var name_old_label = $(this).parent().siblings(".group_th:eq(0)");
+                    var host_old_label = $(this).parent().siblings(".group_th:eq(1)")
+                    var span_label = host_old_label.children();
+                    for (var i=0;i<span_label.length;i++){
+                        var hid = span_label.eq(i).attr("hid");
+                        host_list.push(hid);
+                    }
+                    console.log(host_list)
+
+
+                    var id = $(this).parent().parent().attr("aid");
+                    var name = name_old_label.text();
+                    var action_url = "/application/host/?operation=update&db=application&id=" + id
+                    var new_form = "<form id='update_form' action='/application/host/?operation=update' method='post'></form>";
+                    //var new_id = "<input type='text' name='id' disabled='disabled' value=" + id + ">";
+                    var new_name = "<input type='text' name='name' required='true' value=" + name + ">";
+                    var new_hosts = "<select name='host_id' multiple>{% for host in hosts %}<option value='{{ host.id }}'>{{ host.hostname }}</option>{% endfor %}</select>"
+
+                    // 插入表单
+                    $(this).parent().parent().parent().parent().wrap(new_form).parent().attr("action", action_url);
+                    //$(this).parent().parent().parent().parent().parent().attr("action", action_url)
+
+
+                    //清空标签
+                    name_old_label.empty();
+                    host_old_label.empty();
+
+                    //插入标签
+                    name_old_label.append(new_name);
+                    host_old_label.append(new_hosts);
+                    host_old_label.find("select").val(host_list);
+
+                    allow_groupEdit = 0;
+                }
+                else{
+                  alert("正在编辑数据");
+                }
+
+            });
+
+            allow_machineEdit = 1;
+            // 给主机edit添加click点击事件
+            $(".menu-table .host .edit").click(function () {
+                if(allow_machineEdit==1){
+                    // 取出主机分组的id和名字内容
+                    var hostname_old_label = $(this).parent().siblings(".group_th:eq(0)");
+                    var ip_old_label = $(this).parent().siblings(".group_th:eq(1)");
+                    var port_old_label = $(this).parent().siblings(".group_th:eq(2)");
+                    // var power_old_label = $(this).parent().siblings(".group_th:eq(3)");
+                    var businessId_old_label = $(this).parent().siblings(".group_th:eq(3)");
+
+                    var id = $(this).parent().parent().attr("hid");
+                    var hostname = hostname_old_label.text();
+                    var ip = ip_old_label.text();
+                    var port = port_old_label.text();
+                    // var power = power_old_label.text();
+                    var business_id = businessId_old_label.attr("bid");
+
+                    var action_url = "/application/host/?operation=update&db=host&id=" + id
+                    var new_form = "<form id='update_form' action='/application/host/?operation=update' method='post'></form>";
+                    //var new_id = "<input type='text' name='id' style='width:120px' disabled='disabled' value=" + id + ">";
+                    var new_hostname = "<input type='text' style='width:120px' name='hostname' required='true' value=" + hostname + ">";
+                    var new_ip = "<input type='text' style='width:120px' name='ip' required='true' value=" + ip + ">";
+                    var new_port = "<input type='text' style='width:120px' name='port' required='true' value=" + port + ">";
+                    //var new_power = "<input type='text' style='width:120px' name='power' required='true' value=" + power + ">";
+                    var new_business = "<select name='business_id'>{% for b in business %}<option value='{{ b.id }}'>{{ b.caption }}</option>{% endfor %}</select>"
+
+                    // 插入表单
+                    $(this).parent().parent().parent().parent().wrap(new_form).parent().attr("action", action_url);
+                    //$(this).parent().parent().parent().parent().parent().attr("action", action_url)
+
+
+                    //清空标签
+                    //id_old_label.empty();
+                    hostname_old_label.empty();
+                    ip_old_label.empty();
+                    port_old_label.empty();
+                    //power_old_label.empty();
+                    businessId_old_label.empty();
+
+                    //插入标签
+                    //id_old_label.append(new_id);
+                    hostname_old_label.append(new_hostname);
+                    ip_old_label.append(new_ip);
+                    port_old_label.append(new_port);
+                    //power_old_label.append(new_power);
+                    businessId_old_label.append(new_business);
+                    businessId_old_label.find("select").val(business_id)
+
+
+                    allow_machineEdit = 0;
+                }
+                else{
+                  alert("正在编辑数据");
+                }
+
+            });
+
+            //给主机添加框中的提交加上click事件
+            $(".addHost-box #ajax_submit").click(function () {
+                $.ajax({
+                    url: "/application/host/?operation=add&db=host",
+                    type: 'POST',
+                    //data: {'hostname': $('#host').val(), 'ip': $('#ip').val(), 'port': $('#port').val(), 'b_id': $('#sel').val()},
+                    data: $('.addHost-box #add_form').serialize(),
+                    success: function(data){
+                        var obj = JSON.parse(data);
+                        if(obj.status){
+                            location.reload();
+                        }
+                    }
+                })
+            })
+
+            //给主机删除框中的提交加上click事件
+            $(".deleteHost-box #ajax_submit").click(function () {
+                $.ajax({
+                    url: "/application/host/?operation=delete&db=host",
+                    type: 'POST',
+                    //data: {'hostname': $('#host').val(), 'ip': $('#ip').val(), 'port': $('#port').val(), 'b_id': $('#sel').val()},
+                    data: $('.deleteHost-box #delete_form').serialize(),
+                    success: function(data){
+                        var obj = JSON.parse(data);
+                        if(obj.status){
+                            location.reload();
+                        }
+                    }
+                })
+            })
+
+            //给应用添加框中的提交加上click事件
+            $(".addApplication-box #ajax_submit").click(function () {
+                $.ajax({
+                    url: "/application/host/?operation=add&db=application",
+                    type: 'POST',
+                    //data: {'hostname': $('#host').val(), 'ip': $('#ip').val(), 'port': $('#port').val(), 'b_id': $('#sel').val()},
+                    data: $('.addApplication-box #add_form').serialize(),
+                    success: function(data){
+                        var obj = JSON.parse(data);
+                        if(obj.status){
+                            location.reload();
+                        }
+                    }
+                })
+            })
+
+            //给应用删除框中的提交加上click事件
+            $(".deleteApplication-box #ajax_submit").click(function () {
+                $.ajax({
+                    url: "/application/host/?operation=delete&db=application",
+                    type: 'POST',
+                    //data: {'hostname': $('#host').val(), 'ip': $('#ip').val(), 'port': $('#port').val(), 'b_id': $('#sel').val()},
+                    data: $('.deleteApplication-box #delete_form').serialize(),
+                    success: function(data){
+                        var obj = JSON.parse(data);
+                        if(obj.status){
+                            location.reload();
+                        }
+                    }
+                })
+            })
+
+            //给主机save键添加click事件
+            $(".host .save").click(function () {
+                $.ajax({
+                    url: $(".host #update_form").attr("action"),
+                    type: 'POST',
+                    //data: {'hostname': $('#host').val(), 'ip': $('#ip').val(), 'port': $('#port').val(), 'b_id': $('#sel').val()},
+                    data: $('.host #update_form').serialize(),
+                    success: function(data){
+                        var obj = JSON.parse(data);
+                        if(obj.status){
+                            location.reload();
+                        }
+                    }
+                })
+            })
+
+            //给应用save键添加click事件
+            $(".groups .save").click(function () {
+                $.ajax({
+                    url: $(".groups #update_form").attr("action"),
+                    type: 'POST',
+                    //data: {'hostname': $('#host').val(), 'ip': $('#ip').val(), 'port': $('#port').val(), 'b_id': $('#sel').val()},
+                    data: $('.groups #update_form').serialize(),
+                    success: function(data){
+                        var obj = JSON.parse(data);
+                        if(obj.status){
+                            location.reload();
+                        }
+                    }
+                })
+            })
+
+        })(jQuery)
+    </script>
+</body>
+</html>

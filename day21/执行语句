@@ -1,0 +1,7 @@
+1.location.href = "某个地址"   #跳转
+2.request.environ   #封装了所有用户的请求信息
+3.register.filter()	#只能传两个参数, 不能任意添加空格.但是能用于if后边作为条件.
+4.{{ xxx|safe }}  #告知应用该参数时安全的
+5.set_signed_cookie(salt='XX')		#加密
+6.request.get_signed_cookie(salt='XX')   #获取加密的cookie
+7.method_decorator		#类中添加装饰器的方法

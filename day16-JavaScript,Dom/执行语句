@@ -1,0 +1,25 @@
+1.Css：
+	1.min-width	#最小宽度（当标签的宽度小于最小宽度后，该标签则会以最小宽度作为宽度。）
+	2.overflow：auto	#当标签的高度大于页面的高度时，自动加上滚动条。（position中也可以用）
+	3.border-radius:50%（10px)	#设置边框为圆形。
+	4..'class1':hover .'class2'	#当鼠标移到class1标签上时，对calss1下的class2做处理
+
+2.属性：
+	1.onfocus	#当所属标签获取焦点时,可以执行一个函数.
+	2.blur		#当所属标签失去焦点时,可以执行一个函数.
+	3.placeholder	#用于input标签中.		`
+
+
+3.标签:
+	1.<hr />	#分割线 
+
+
+
+4.Dom:
+	1.document.getElementById('i1').insertAddjacentHTML('beforeEnd',tag)	#添加标签到HTML中.注意：第一个参数只能是'beforeBegin'、 'afterBegin'、 'beforeEnd'、 'afterEnd'
+
+
+
+5.JavaScript:
+	1.onmouseover	#当鼠标移到指定标签位置时,执行一个方法.
+	2.onmouseout	#当鼠标移出指定标签位置时,执行一个方法.

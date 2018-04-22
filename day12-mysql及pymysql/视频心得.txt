@@ -1,0 +1,20 @@
+http://www.cnblogs.com/alex3714/articles/5950372.html
+1.mysql数据库：更有效率的存数据，更有效率的取数据。
+2.rabbitmq数据库：非关系型数据库。
+3.冗余字段：可以加快查询速度，但是增加了数据量。
+4.索引：对列字段进行优化，加快查询速度。
+5.inner join:类似与交集.
+6.left(right) join:类似与差集.
+7.在MySQL中只有使用了Innodb数据库引擎的数据库或表才支持事务
+8.事务处理可以用来维护数据库的完整性，保证成批的SQL语句要么全部执行，要么全部不执行.
+9.事务是必须满足4个条件（ACID）： Atomicity（原子性）、Consistency（稳定性）、Isolation（隔离性）、Durability（可靠性）
+10.一个表里的主键自动就是索引.
+11.通过orm将编程语言的对象模型和数据库的关系模型建立映射关系.
+12.creat_engine()	#连接数据库.
+13.Base = declarative_base()	#生成orm基类.
+14.Column()	#生成字段的.
+15.Base.metadata.creat_all(engine)	#创建表结构.
+16.sessionmaker()	#创建与数据库会话的类.
+17.Session.add()	#把要创建的数据对象添加到session里.
+18.Session.query().filter_by()	#根据字段来查询数据库.
+19.Session.add_all()	#以列表的形式将全部的数据加入数据库的表中.

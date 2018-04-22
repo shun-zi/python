@@ -1,0 +1,104 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Welcome to Machine</title>
+    <link rel="SHORTCUT ICON" href="../../statics/img/1.jpg" />
+{% endblock %}
+
+{% block css %}
+    <style>
+        .background{
+            background-image: url("http://127.0.0.1:8000/statics/img/2.jpg");
+            z-index: 0;
+            width: 1500px;
+            height: 961px;
+            position: relative;
+        }
+        .navigation-bar{
+            width: 1140px;
+            height: 83px;
+            margin-left: 10%;
+            color: white;
+        }
+        .navigation-bar img{
+            width: 88px;
+            height: 83px;
+        }
+        .navigation-bar .nav-login,.nav-register{
+            font-size: 20px;
+            float: right;
+            margin-right: 40px;
+            line-height: 83px;
+        }
+        .navigation-bar .nav-link{
+            color: white;
+            text-decoration: none;
+        }
+
+        .container-left{
+            width: 550px;
+            height: 304px;
+            position: absolute;
+            top: 30%;
+            left: 8%;
+        }
+        .guild-h1{
+            font-size: 73px;
+            color: white;
+            margin: 10px;
+        }
+        .guild-h3{
+            font-size: 27px;
+            color: white;
+            margin: 10px;
+        }
+        .container-left .con-link{
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 20px;
+            background-color: #3d5afe;
+            cursor: pointer;
+            padding: 20px;
+            margin-left: 160px;
+            margin-top: 40px;
+        }
+        .container-right{
+            width: 550px;
+            height: 600px;
+            position: absolute;
+            top: 30%;
+            right: 20%;
+        }
+        .container-right img{
+            width: 550px;
+            height: 300px;
+            border-radius: 6%;
+        }
+    </style>
+{% endblock %}
+{% block section1 %}
+    <div class="background">
+        <div class="navigation-bar">
+            <img src="../../statics/img/1.jpg">
+            <div class="nav-login">
+                <a class="nav-link" href="/home/login">login</a>
+            </div>
+            <div class="nav-register">
+                <a class="nav-link" href="/home/register">register</a>
+            </div>
+        </div>
+{% endblock %}
+{% block section2 %}
+        <div class="container-left">
+            <div class="guild-h1">Welcome to Here</div>
+            <div class="guild-h3">Please login or register</div>
+            <div>
+                <a class="con-link" href="/home/machine">LEARN MORE</a>
+            </div>
+        </div>
+        <div class="container-right">
+            <img src="../../statics/img/3.jpg">
+        </div>
+        <div style="clear: both"></div>
+    </div>
+{% endblock %}

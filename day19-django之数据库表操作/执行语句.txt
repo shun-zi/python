@@ -1,0 +1,5 @@
+1.<input type='radio' >
+2.上传文件时,form标签中要添加"enctype='multipart/form-data'",添加以后,如果表单提交的是字符串,则可由'POST'提取,
+	如果表单提交的是文件,则可由'FILES'提取.
+3.obj.chunks()	#迭代器,一点一点地接受文件内容.
+4.request.path_info    //当前的url

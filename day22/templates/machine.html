@@ -1,0 +1,91 @@
+{% extends "base.html" %}
+{% block title %}
+    <title>Machine Home</title>
+    <link rel="SHORTCUT ICON" href="../../statics/img/1.jpg" />
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="../../statics/css/bootstrap-theme.css">
+    <link rel="stylesheet" href="../../statics/css/bootstrap.css">
+    <link rel="stylesheet" href="../../statics/css/nav.css">
+    <style>
+        <!-- section2 -->
+        .self-container{
+            width: 1300px;
+            height: 700px;
+            margin-top: 100px;
+            margin-left: 300px;
+            position: relative;
+        }
+
+        .self-container .title{
+            text-align: center;
+            margin-top: 100px;
+        }
+
+        .self-container .list{
+            margin-top: 100px;
+            background-color: white;
+        }
+
+        .self-container .list .item{
+            float: left;
+            padding:20px;
+            width: 200px;
+            height: 200px;
+            font-size: 20px ;
+            cursor: pointer;
+        }
+    </style>
+{% endblock %}
+
+{% block centersidebar %}
+    <img src="../../statics/img/1.jpg">
+{% endblock %}
+
+{% block dLabel %}
+    <img src="../../statics/img/4.jpg">
+{% endblock %}
+
+{% block section2 %}
+    <div class="self-container" style="width: 1000px;height: 700px; margin-top: 100px; margin-left: 300px; position: relative">
+        <div class="title">
+            <h1>Welcome to Host Manage System!</h1>
+        </div>
+        <div class="list">
+            <div class="item">
+                <span class="glyphicon glyphicon-folder-close" aria-hidden="true"></span>
+                <div id="i1">主机管理</div>
+            </div>
+            <div class="item">
+                <span class="glyphicon glyphicon-blackboard" aria-hidden="true"></span>
+                <div id="i2">应用管理</div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+{% endblock %}
+
+{% block js-files %}
+    <script src="../../statics/js/jquery-1.12.4.js"></script>
+    <script src="../../statics/js/bootstrap.js"></script>
+{#    <script src="../../statics/js/jquery.cookie-1.4.1.min.js"></script>#}
+    <script src="../../statics/js/jquery.cookie.js"></script>
+{% endblock %}
+
+{% block js-self %}
+        $(".self-container .list .item").hover(function () {
+                    changeBC(this);
+                });
+
+        $(".self-container .list .item").click(function () {
+            var id = $(this).find("div").attr("id")
+            if(id == 'i1'){
+                window.location.href='http://127.0.0.1:8000/home/machine/host';
+            }
+            else if(id == 'i2'){
+                window.location.href='http://127.0.0.1:8000/home/machine/app';
+            }
+        })
+{% endblock %}

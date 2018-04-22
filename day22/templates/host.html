@@ -1,0 +1,261 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Host Information</title>
+    <link rel="SHORTCUT ICON" href="../../../statics/img/1.jpg" />
+{% endblock %}
+
+{% block css %}
+    <link rel="stylesheet" href="../../../statics/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="../../../statics/css/bootstrap.css" />
+    <link rel="stylesheet" href="../../../statics/css/nav.css">
+    <style>
+
+        {#section2#}
+        .self-container{
+            width: 1300px;
+            height: 700px;
+            margin-top: 100px;
+            margin-left: 300px;
+            position: relative;
+            background-color: white;
+        }
+        .self-container .title{
+            background-color: #3c4b52;
+            color: white;
+            font-size: 29px;
+        }
+
+        .self-container .left-infBox{
+            width: 70%;
+            float: left;
+            border: 1px solid #c5c4c4;
+            position: relative;
+        }
+
+        .self-container .left-infBox .op{
+            height: 48px;
+        }
+
+        .self-container .left-infBox .op div{
+            float: left;
+            padding: 10px;
+            font-size: 20px;
+        }
+
+        .self-container .left-infBox .inf-table th{
+            width: 225px;
+            padding: 10px;
+        }
+
+        .self-container .left-infBox .pagination{
+            margin: 0;
+            margin-left: 30%;
+        }
+
+        .self-container .left-infBox .pagination div input[type=text]{
+            width:40px;height: 26px; padding: 10px;
+        }
+
+        {#section3#}
+        .hide{
+            display: none;
+        }
+
+        .shadow{
+            position: fixed;
+            width: 100%;
+            height: 700px;
+            background-color:black;
+            z-index: 1;
+            opacity: 0.5;
+            top:0;
+            left: 0;
+            right: 0;
+        }
+
+        .del-box{
+            position: fixed;
+            z-index: 2;
+            width: 500px;
+            height: 500px;
+            top:20%;
+            left: 37%;
+            background-color: white;
+            border: 1px solid #666666 ;
+        }
+        
+        .del-box .title{
+            background-color: #3c4b52;
+            color:white;
+            padding: 10px;
+        }
+
+
+        .del-box form .id span{
+            display: inline-block;
+            padding: 10px;
+            font-size: 17px;
+            font-weight: bold;
+        }
+
+        .del-box form .id input{
+            margin-left: 50px;
+            padding: 5px;
+            height: 35px;
+        }
+
+        .del-box form .submit input{
+            width: 80px;
+            height: 36px;
+            text-decoration: none;
+            background-color: #205067;
+            font-size: 20px;
+            color: white;
+            margin-left: 40%;
+            margin-top: 378px;
+        }
+    </style>
+{% endblock %}
+
+{% block centersidebar %}
+    <img src="../../../statics/img/1.jpg">
+{% endblock %}
+
+{% block dLabel %}
+    <img src="../../../statics/img/4.jpg">
+{% endblock %}
+
+
+{% block section2 %}
+    <div class="self-container" style="width: 1000px;height: 700px;margin-top: 100px;margin-left: 300px;position: relative;">
+        <div class="title">
+            <span class="glyphicon glyphicon-tasks" aria-hidden="true"></span>
+            <span>Host Information</span>
+        </div>
+        <div class="left-infBox">
+            <div class="op" style="border-bottom: 1px solid #c5c4c4;">
+                <div>
+                    <a href="/home/machine/host/add-host/">
+                        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+                        <span>ADD</span>
+                    </a>
+                </div>
+                <div>
+                    <a id="delete" href="#">
+                        <span class="glyphicon glyphicon-minus" aria-hidden="true"></span>
+                        <span>DELETE</span>
+                    </a>
+                </div>
+                <div style="clear: both;"></div>
+            </div>
+            <div class="inf-table">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>hostname</th>
+                            <th>ip</th>
+                            <th>port</th>
+                            <th>business_name</th>
+                            <th>opreation</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for host in page.show_host %}
+                            <tr>
+                                <th>{{ host.hostname }}</th>
+                                <th>{{ host.ip }}</th>
+                                <th>{{ host.port }}</th>
+                                <th>{{ host.business.caption }}</th>
+                                <th>
+                                    <a href="#">
+                                        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                                        <a href="/home/machine/host/edit-host/?id={{ host.id }}">edit</a>
+                                    </a>
+                                </th>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+            <div class="pagination">
+                 <div>
+                    <div>
+                        <input type="button" value="显示信息数">
+                        <input type="text">
+                        {% for page_index in page.show_page %}
+                        <a href="/home/machine/host/?page={{ page_index }}">{{ page_index }}</a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div style="clear: both;"></div>
+        </div>
+        <div class="right-infBox">
+
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+{% endblock %}
+
+{% block section3 %}
+    {# 遮罩层和删除框#}
+    <div class="shadow hide"></div>
+    <div class="del-box hide">
+        <div class="title">DELETE HOST</div>
+        <form action="/home/machine/host/?op=delete" method="post">
+            {% csrf_token %}
+            <div class="id">
+                <span>Host Id:</span>
+                <input type="text" name="id" required="true">
+            </div>
+            <div class="submit">
+                <input type="submit" value="delete">
+                <div style="clear: both;"></div>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block js-files %}
+    <script src="../../../statics/js/jquery-1.12.4.js"></script>
+    <script src="../../../statics/js/bootstrap.js"></script>
+    <script src="../../../statics/js/jquery.cookie.js"></script>
+{% endblock %}
+
+{% block js-self %}
+     $(".self-container .left-infBox .pagination :button").click(function () {
+                    // 指定当页显示的信息数
+                    var one_page_hosts =  $(this).next().val();
+                    $.cookie("show_hosts", one_page_hosts, {"path": "/home/machine/"});
+                    location.reload();
+                });
+
+    //当点击DELETE时,弹出模态对话框.
+    $(".self-container .left-infBox .op div #delete").click(function (event) {
+        $(".shadow").removeClass('hide');
+        $(".del-box").removeClass('hide');
+        event.preventDefault();
+    })
+
+    //确保删除模态对话框中的host-id为整数.
+    $(".del-box form .submit input").click(function (event) {
+        var id = $(".del-box form .id input").val();
+        myRe = /[0-9]+/g;
+        var array = myRe.exec(id)
+        try{
+            //匹配到数字的子串的长度
+            var sub_len = array[0].length;
+        }
+        catch(err)
+        {
+            var sub_len = 0;
+        }
+        if(sub_len == 0){
+            var label = "<div style='color:red;padding:10px;font-size:15px;'>id只能为数字</div>";
+            $(".del-box form .id input").parent().find('div').remove();
+            $(".del-box form .id input").after(label);
+            event.preventDefault();
+        }
+    })
+{% endblock %}

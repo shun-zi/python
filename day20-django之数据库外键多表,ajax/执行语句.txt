@@ -1,0 +1,19 @@
+1.models.tableClass.objects.all()	#返回包含对象的列表。
+2.models.tableClass.objects.all().values('column_name')   #values取出对应列名的数据。返回包含字典的列表。
+3.models.tableClass.objects.all().values_list('column_name')   #返回包含元祖的列表
+4.forloop.counter	#模板语言的for循环内特有属性。计数器，每循环一次记一次数。从1开始。正序计数
+5.forloop.counter0	#模板语言的for循环内特有属性。计数器，每循环一次记一次数。从0开始。正序计数
+6.forloop.revcounter	#模板语言的for循环内特有属性。计数器，每循环一次记一次数。倒序计数，直到1.
+7.forloop.revcounter0	#模板语言的for循环内特有属性。计数器，每循环一次记一次数。倒序计数，直到0
+8.forloop.last		#判断是否是最后一个循环
+9.forloop.first		#判断是否是第一个循环
+10.forloop.parentloop   #给出外循环的counter和counter0，revcounter，revcounter0，last， first这六项信息。
+11.localtion.reload()	#在Ajax里面执行的，刷新当前页面。
+12.JSON.parse("xx")	#将字符串反序列化。
+13.JSON.stringify("xx")	#序列化对象.
+14.$("xx").serialize()	#将选定表单(form)中的值打包发送到后台.
+15.models.ManyToManyField("xx")	#与指定的类建立第三张多对多关系表.
+16.dataType:'JSON'    //用在ajax中，django主动将服务器端返回的字符串反序列化，转成对象。
+17.error：function(){}	//当服务器端捕捉不到请求时,才会调用.
+18.traditional:true	//可以取得data:{"xx":[]}中的列表或者字典.
+19.[].push()	//javascript中的列表添加元素

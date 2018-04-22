@@ -1,0 +1,108 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Edit App</title>
+    <link rel="SHORTCUT ICON" href="../../../../statics/img/1.jpg" />
+{% endblock %}
+
+{{% block css %}
+    <link rel="stylesheet" href="../../../../statics/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="../../../../statics/css/bootstrap.css" />
+    <link rel="stylesheet" href=".http://127.0.0.1:8000/statics/css/nav.css">
+    <style>
+
+        {#section2#}
+        .self-container .title{
+            font-size: 24px;
+            background-color: #3c4b52;
+            color:white;
+            padding: 20px;
+        }
+
+        .self-container .guide{
+            color:#666;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .self-container .fields div{
+            padding: 20px;
+            border-bottom: 1px solid #bdc5ff;
+        }
+
+        .self-container .fields div span{
+            display: inline-block;
+            padding: 5px;
+            width: 250px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .self-container .fields .save{
+            border-bottom: 0;
+            background-color: #efffe9;
+            height: 80px;
+        }
+
+        .self-container .fields .save input{
+            width: 80px;
+            height: 50px;
+            text-decoration: none;
+            background-color: #205067;
+            font-size: 20px;
+            float: right;
+            border-radius: 14%;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block centersidebar %}
+    <img src="../../../../statics/img/1.jpg">
+{% endblock %}
+
+{% block dLabel %}
+    <img src="../../../../statics/img/4.jpg">
+{% endblock %}
+
+{% block section2 %}
+    <div class="self-container">
+        <div class="title">Edit App</div>
+        <div class="guide">填写修改信息,再点击保存.</div>
+        <div>
+            <form class="fields" action="/home/machine/app/edit-app/?id={{ app.id }}" method="post">
+                {% csrf_token %}
+                <div>
+                    <span>appname:</span>
+                    <input type="text" name="name" required="true" value="{{ app.name }}">
+                </div>
+                <div>
+                    <span>hosts:</span>
+                    <select name="host_id" multiple>
+                        {% for host in hosts %}
+                            <option value="{{ host.id }}">{{ host.hostname }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="save">
+                    <input type="submit" value="保存">
+                    <div style="clear: both;border-bottom: 0"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js-files %}
+    <script src="../../../../statics/js/jquery-1.12.4.js"></script>
+    <script src="../../../../statics/js/bootstrap.js"></script>
+    <script src="../../../../statics/js/jquery.cookie.js"></script>
+{% endblock %}
+{% block js-self%}
+            $(".self-container .left-infBox .pagination :button").click(function () {
+                // 指定当页显示的信息数
+                var one_page_hosts =  $(this).next().val();
+                $.cookie("show_hosts", one_page_hosts, {"path": "/home/machine/"});
+                location.reload();
+            });
+{% endblock %}

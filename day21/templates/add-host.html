@@ -1,0 +1,250 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Add Host</title>
+    <link rel="SHORTCUT ICON" href="../../../../statics/img/1.jpg" />
+{% endblock %}
+
+{{% block css %}
+    <link rel="stylesheet" href="../../../../statics/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="../../../../statics/css/bootstrap.css" />
+    <style>
+        {#section1#}
+        .nav{
+            background-color: white;
+            width: 1920px;
+            height: 51px;
+            position: relative;
+        }
+        .nav .leftsidebar{
+            float: left;
+            margin-left: 15px;
+        }
+        .nav .leftsidebar a{
+            text-decoration: none;
+            color: black;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 15px;
+            padding: 14px;
+            line-height: 51px;
+        }
+        .nav .centersidebar{
+            position: absolute;
+            top:0;
+            left: 48%;
+        }
+        .nav .centersidebar img{
+            width: 51px;
+            height: 51px;
+        }
+        .nav .rightsiderbar{
+            float: right;
+            padding: 14px;
+            margin-right: 40px;
+        }
+
+        .nav .rightsiderbar .dropdown #dLabel{
+            border: 0;
+            background-color: white;
+        }
+
+        .nav .rightsiderbar img{
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+        }
+        .nav .rightsiderbar span{
+            font-weight: 500;
+        }
+
+        .nav .rightsiderbar .dropdown .dropdown-menu{
+            right: -15px;
+            left: auto;
+            border-radius: 0;
+            top: 35px;
+        }
+
+        .nav .rightsiderbar .dropdown .dropdown-menu li{
+            padding: 10px;
+            cursor: pointer;
+        }
+        .nav .rightsiderbar .dropdown .dropdown-menu #log-out a{
+            text-decoration: none;
+            color: black;
+            background-image: none;
+        }
+
+        {#section2#}
+        .self-container .title{
+            font-size: 24px;
+            background-color: #3c4b52;
+            color:white;
+            padding: 20px;
+        }
+
+        .self-container .guide{
+            color:#666;
+            font-size: 20px;
+            padding: 20px;
+        }
+
+        .self-container .fields div{
+            padding: 20px;
+            border-bottom: 1px solid #bdc5ff;
+        }
+
+        .self-container .fields div span{
+            display: inline-block;
+            padding: 5px;
+            width: 250px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .self-container .fields .save{
+            border-bottom: 0;
+            background-color: #efffe9;
+            height: 80px;
+        }
+
+        .self-container .fields .save input{
+            width: 80px;
+            height: 50px;
+            text-decoration: none;
+            background-color: #205067;
+            font-size: 20px;
+            float: right;
+            border-radius: 14%;
+            color: white;
+        }
+    </style>
+{% endblock %}
+
+{% block section1 %}
+    <div class="nav">
+        <div class="leftsidebar">
+            <a href="/home/machine/host/">主机管理</a>
+        </div>
+        <div class="leftsidebar">
+            <a href="/home/machine/app/">应用管理</a>
+        </div>
+        <div class="leftsidebar">
+            <a href="#">帮助</a>
+        </div>
+        <div class="centersidebar">
+            <img src="../../../../statics/img/1.jpg">
+        </div>
+        <div class="rightsiderbar">
+            <div class="dropdown">
+              <button id="dLabel" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  <img src="../../../../statics/img/4.png">
+                  <span>{{ username }}</span>
+                  <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dLabel">
+                  <li>编辑个人信息</li>
+                  <li id="log-out">注销</li>
+              </ul>
+            </div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+{% endblock %}
+
+{% block section2 %}
+    <div class="self-container">
+        <div class="title">ADD HOST</div>
+        <div class="guide">首先填写hostname,ip,port,然后选择business,再点击保存.</div>
+        <div>
+            <form class="fields" action="/home/machine/host/add-host/" method="post">
+                <div>
+                    <span>hostname:</span>
+                    <input type="text" name="hostname" required="true">
+                </div>
+                <div>
+                    <span>ip:</span>
+                    <input type="text" name="ip" required="true">
+                </div>
+                <div>
+                    <span>port</span>
+                    <input id="port" type="text" name="port" required="true"s>
+                </div>
+                <div>
+                    <span>business:</span>
+                    <select name="business_id">
+                        {% for b in business %}
+                            <option value="{{ b.id }}">{{ b.caption }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="save">
+                    <input type="submit" value="保存">
+                    <div style="clear: both;border-bottom: 0"></div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script src="../../../../statics/js/jquery-1.12.4.js"></script>
+    <script src="../../../../statics/js/bootstrap.js"></script>
+    <script src="../../../../statics/js/jquery.cookie.js"></script>
+    <script>
+        (function ($) {
+            function changeBC(ths) {
+                //改变一个标签的背景色并让其兄弟标签统一换成别的背景色.
+                $(ths).css("background-color", "rgb(239, 239, 239)");
+                $(ths).siblings().css("background-color", "white");
+            };
+
+            $('.dropdown').on('shown.bs.dropdown', function () {
+                $(".nav .rightsiderbar").css("background-color", "rgb(239, 239, 239)");
+                $(".nav .rightsiderbar .dropdown #dLabel").css("background-color", "rgb(239, 239, 239)");
+            });
+            $('.dropdown').on('hidden.bs.dropdown', function () {
+                $(".nav .rightsiderbar").css("background-color", "white");
+                $(".nav .rightsiderbar .dropdown #dLabel").css("background-color", "white");
+            });
+
+            $(".dropdown .dropdown-menu li").hover(function () {
+                changeBC(this);
+            });
+
+            $(".dropdown .dropdown-menu #log-out").click(function (event) {
+                $.cookie("username", 'None', {'path':'/home/machine/'});
+                location.reload();
+            });
+
+            $(".self-container .left-infBox .pagination :button").click(function () {
+                // 指定当页显示的信息数
+                var one_page_hosts =  $(this).next().val();
+                $.cookie("show_hosts", one_page_hosts, {"path": "/home/machine/"});
+                location.reload();
+            });
+
+            $(".self-container .fields .save input").click(function (even) {
+                // 当port输入字段不为数字时.
+                var port = $(".self-container .fields #port").val();
+                myRe = /[0-9]+/g;
+                var array = myRe.exec(port)
+                try{
+                    //匹配到数字的子串的长度
+                    var sub_len = array[0].length;
+                }
+                catch(err)
+                {
+                    var sub_len = 0;
+                }
+                if(sub_len == 0){
+                    var label = "<div style='color:red;padding:10px;font-size:15px;'>port只能为数字</div>";
+                    $(".self-container .fields #port").parent().find('div').remove();
+                    $(".self-container .fields #port").after(label);
+                    even.preventDefault();
+                }
+            })
+        })(jQuery)
+
+    </script>
+{% endblock %}

@@ -1,0 +1,20 @@
+.item .title{
+    background-color: cadetblue;
+    color: white;
+    font-size: 25px;
+}
+.menu{
+    width:300px;
+}
+.hide{
+    display: none;
+}
+.dsajk{
+    margin: 10px;
+    margin: 1.5em;
+    margin: 1.5ex;
+    width: 100%;
+    width: 100ex;
+    color: #111111;
+    '-webkit-border-radius: ;-moz-border-radius: ;border-radius: ;'
+}

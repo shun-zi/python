@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>detail</title>
+    <link rel="stylesheet" href="../statics/css/bootstrap-theme.css" />
+    <link rel="stylesheet" href="../statics/css/bootstrap.css " />
+    <link rel="stylesheet" href="../statics/css/detail.css">
+</head>
+<body>
+    <div class="information">
+        <ul class="list-group1">
+            <li class="list-group-item list-group-item-success">id:</li>
+            <li class="list-group-item list-group-item-success">hostanme:</li>
+            <li class="list-group-item list-group-item-success">ip:</li>
+            <li class="list-group-item list-group-item-success">port:</li>
+            <li class="list-group-item list-group-item-success">power:</li>
+            <li class="list-group-item list-group-item-success">a:</li>
+            <li class="list-group-item list-group-item-success">b:</li>
+            <li class="list-group-item list-group-item-success">c:</li>
+            <li class="list-group-item list-group-item-success">d:</li>
+        </ul>
+        <div class="list-group2">
+            <span class="list-group-item list-group-item-info">{{ machine.id }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.hostname }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.ip }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.port }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.power }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.a }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.b }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.c }}</span>
+            <span class="list-group-item list-group-item-info">{{ machine.d }}</span>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</body>
+</html>
